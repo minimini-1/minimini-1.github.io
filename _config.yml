@@ -16,7 +16,7 @@ timezone: Asia/Seoul
 
 title: Jongmin Gim # the main title
 
-tagline: hi! # it will display as the subtitle
+tagline: A contract researcher in Korea Electronics Technology Institute (KETI) # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   Jongmin's profile
@@ -28,9 +28,6 @@ url: "https://github.com/minimini-1.github.io"
 github:
   username: minimini-1 # change to your GitHub username
 
-twitter:
-  username: twitter_username # change to your Twitter username
-
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
@@ -38,7 +35,6 @@ social:
   email: jongmin4422@dgist.ac.kr
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your Twitter homepage
     - https://github.com/minimini-1 # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
@@ -88,7 +84,7 @@ pageviews:
 #     light — Use the light color scheme
 #     dark — Use the dark color scheme
 #
-theme_mode: dark
+theme_mode: light
 
 # The CDN endpoint for media resources.
 # Notice that once it is assigned, the CDN url
@@ -170,6 +166,8 @@ collections:
   tabs:
     output: true
     sort_by: order
+  homes:
+    output: true
 
 defaults:
   - scope:
@@ -192,6 +190,13 @@ defaults:
     values:
       layout: page
       permalink: /:title/
+  - scope:
+      path: ""
+      type: homes
+    values:
+      layout: post
+
+home_post: "2025-03-14-aboutme.md"
 
 sass:
   style: compressed
