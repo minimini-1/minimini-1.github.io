@@ -219,6 +219,7 @@ exclude:
   - LICENSE
   - purgecss.js
   - rollup.config.js
+  - rollup.config*.cjs
   - "package*.json"
 
 jekyll-archives:
