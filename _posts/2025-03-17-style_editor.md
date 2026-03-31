@@ -1,6 +1,6 @@
 ---
 title: "Style-Editor: Text-driven object-centric style editing"
-description: Conference on Computer Vision and Pattern Recognition (CVPR), Jun 2025
+description: Conference on Computer Vision and Pattern Recognition (CVPR, Highlight) 2025
 author: JiHun Park*, <strong>Jongmin Gim*</strong>, Kyoungmin Lee*, Seunghun Lee, and Sunghoon Im.
 categories: publications
 date: 2025-03-14
