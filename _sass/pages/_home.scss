@@ -106,7 +106,7 @@
 
 .pagination {
   color: var(--text-color);
-  font-family: Lato, sans-serif;
+  font-family: v.$font-family-heading;
   justify-content: space-evenly;
 
   @include bp.lg {

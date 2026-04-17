@@ -1,6 +1,6 @@
 ---
 title: "Infinite-Story: A Training-Free Consistent Text-to-Image Generation"
-description: AAAI 2026 (Oral)
+description: AAAI Conference on Artificial Intelligence <strong>(AAAI, Oral)</strong> 2026
 author: Jihun Park*, Kyoungmin Lee*, <strong>Jongmin Gim*</strong>, Hyeonseo Jo, Minseok Oh, Wonhyeok Choi, Kyumin Hwang, Jaeyeul Kim, Minwoo Choi, and Sunghoon Im.
 categories: publications
 date: 2025-11-17

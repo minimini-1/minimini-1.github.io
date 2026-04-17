@@ -1,114 +1,110 @@
 @mixin styles {
   /* Framework color */
-  --main-bg: white;
-  --mask-bg: #c1c3c5;
-  --main-border-color: #f3f3f3;
+  --main-bg: #f6f3eb;
+  --mask-bg: #c3b796;
+  --main-border-color: #d7ccb0;
 
   /* Common color */
-  --text-color: #34343c;
-  --text-muted-color: #757575;
+  --text-color: #231c14;
+  --text-muted-color: #655a46;
   --text-muted-highlight-color: inherit;
-  --heading-color: #2a2a2a;
-  --label-color: #585858;
-  --blockquote-border-color: #eeeeee;
-  --blockquote-text-color: #757575;
-  --link-color: #0056b2;
-  --link-underline-color: #dee2e6;
-  --button-bg: #ffffff;
-  --btn-border-color: #e9ecef;
-  --btn-backtotop-color: #686868;
-  --btn-backtotop-border-color: #f1f1f1;
-  --checkbox-color: #c5c5c5;
-  --checkbox-checked-color: #07a8f7;
-  --img-bg: radial-gradient(
-    circle,
-    rgb(255, 255, 255) 0%,
-    rgb(239, 239, 239) 100%
-  );
+  --heading-color: #241d14;
+  --label-color: #5e5039;
+  --blockquote-border-color: #bfa86c;
+  --blockquote-text-color: #655a46;
+  --link-color: #8e5522;
+  --link-underline-color: #cdbf9c;
+  --button-bg: #ddd1ad;
+  --btn-border-color: #bba97f;
+  --btn-backtotop-color: #5f5139;
+  --btn-backtotop-border-color: #cbbd97;
+  --checkbox-color: #b5ab8e;
+  --checkbox-checked-color: #a25c1e;
+  --img-bg: #ffffff;
   --shimmer-bg: linear-gradient(
     90deg,
-    rgba(250, 250, 250, 0) 0%,
-    rgba(232, 230, 230, 1) 50%,
-    rgba(250, 250, 250, 0) 100%
+    rgba(243, 237, 217, 0) 0%,
+    rgba(232, 223, 192, 1) 50%,
+    rgba(243, 237, 217, 0) 100%
   );
 
   /* Sidebar */
-  --site-title-color: rgb(113, 113, 113);
-  --site-subtitle-color: #717171;
-  --sidebar-bg: #f6f8fa;
-  --sidebar-border-color: #efefef;
-  --sidebar-muted-color: #545454;
-  --sidebar-active-color: #1d1d1d;
-  --sidebar-hover-bg: rgb(223, 233, 241, 0.64);
-  --sidebar-btn-bg: white;
-  --sidebar-btn-color: #8e8e8e;
-  --avatar-border-color: white;
+  --site-title-color: #231c14;
+  --site-subtitle-color: #231c14;
+  --sidebar-bg: #f6f3eb;
+  --sidebar-border-color: #c9bc98;
+  --sidebar-muted-color: #5f5139;
+  --sidebar-active-color: #231c14;
+  --sidebar-hover-bg: rgb(176, 131, 67, 0.12);
+  --sidebar-btn-bg: #e6dcc0;
+  --sidebar-btn-color: #6d5c40;
+  --avatar-border-color: #f2ead4;
 
   /* Topbar */
-  --topbar-bg: rgb(255, 255, 255, 0.7);
-  --topbar-text-color: rgb(78, 78, 78);
-  --search-border-color: rgb(240, 240, 240);
-  --search-icon-color: #c2c6cc;
-  --input-focus-border-color: #b8b8b8;
+  --topbar-bg: #f6f3eb;
+  --topbar-text-color: #4f4331;
+  --search-border-color: #c8ba95;
+  --search-icon-color: #98876a;
+  --input-focus-border-color: #f6f3eb;
 
   /* Home page */
-  --post-list-text-color: dimgray;
-  --btn-patinator-text-color: #555555;
+  --post-list-text-color: #544936;
+  --btn-patinator-text-color: #5f5139;
   --btn-paginator-hover-color: var(--sidebar-bg);
 
   /* Posts */
-  --toc-highlight: #0550ae;
-  --toc-popup-border-color: lightgray;
-  --btn-share-color: gray;
-  --btn-share-hover-color: #0d6efd;
-  --card-bg: white;
-  --card-hovor-bg: #e2e2e2;
-  --card-shadow: rgb(104, 104, 104, 0.05) 0 2px 6px 0,
-    rgba(211, 209, 209, 0.15) 0 0 0 1px;
-  --footnote-target-bg: lightcyan;
-  --tb-odd-bg: #fbfcfd;
-  --tb-border-color: #eaeaea;
-  --dash-color: silver;
-  --kbd-wrap-color: #bdbdbd;
+  --toc-highlight: #8e5522;
+  --toc-popup-border-color: #c8ba95;
+  --btn-share-color: #77684c;
+  --btn-share-hover-color: #a25c1e;
+  --card-bg: #ffffff;
+  --card-hovor-bg: #f1ead8;
+  --card-shadow:
+    rgb(88, 72, 44, 0.08) 0 2px 8px 0, rgba(123, 102, 69, 0.16) 0 0 0 1px;
+  --footnote-target-bg: #efe0b6;
+  --tb-odd-bg: #f1ead3;
+  --tb-border-color: #d1c3a0;
+  --dash-color: #9e8d68;
+  --kbd-wrap-color: #b7a784;
   --kbd-text-color: var(--text-color);
-  --kbd-bg-color: white;
-  --prompt-text-color: rgb(46, 46, 46, 0.77);
-  --prompt-tip-bg: rgb(123, 247, 144, 0.2);
-  --prompt-tip-icon-color: #03b303;
-  --prompt-info-bg: #e1f5fe;
-  --prompt-info-icon-color: #0070cb;
-  --prompt-warning-bg: rgb(255, 243, 205);
-  --prompt-warning-icon-color: #ef9c03;
-  --prompt-danger-bg: rgb(248, 215, 218, 0.56);
-  --prompt-danger-icon-color: #df3c30;
+  --kbd-bg-color: #f4edd8;
+  --prompt-text-color: rgb(49, 42, 31, 0.85);
+  --prompt-tip-bg: rgb(192, 223, 168, 0.45);
+  --prompt-tip-icon-color: #517b2d;
+  --prompt-info-bg: #dfdfcb;
+  --prompt-info-icon-color: #6c5b3d;
+  --prompt-warning-bg: #efddb4;
+  --prompt-warning-icon-color: #a86930;
+  --prompt-danger-bg: rgb(219, 172, 156, 0.5);
+  --prompt-danger-icon-color: #8a2f18;
 
   /* Tags */
-  --tag-border: #dee2e6;
+  --tag-border: #cbbd97;
   --tag-shadow: var(--btn-border-color);
-  --tag-hover: rgb(222, 226, 230);
-  --search-tag-bg: #f8f9fa;
+  --tag-hover: rgb(225, 215, 184);
+  --search-tag-bg: #f0e7cf;
 
   /* Categories */
-  --categories-border: rgba(0, 0, 0, 0.125);
+  --categories-border: rgba(78, 61, 32, 0.18);
   --categories-hover-bg: var(--btn-border-color);
-  --categories-icon-hover-color: darkslategray;
+  --categories-icon-hover-color: #5c492a;
 
   /* Archive */
-  --timeline-color: rgba(0, 0, 0, 0.075);
-  --timeline-node-bg: #c2c6cc;
-  --timeline-year-dot-color: #ffffff;
+  --timeline-color: rgba(86, 67, 37, 0.15);
+  --timeline-node-bg: #b59c74;
+  --timeline-year-dot-color: #f4edd8;
 
   /* --- Custom code light mode colors --- */
-  --language-border-color: #ececec;
-  --highlight-bg-color: #f6f8fa;
-  --highlighter-rouge-color: #3f596f;
-  --highlight-lineno-color: #9e9e9e;
-  --inline-code-bg: rgba(25, 25, 28, 0.05);
-  --code-color: #3a3a3a;
-  --code-header-text-color: #a3a3a3;
-  --code-header-muted-color: #e5e5e5;
-  --code-header-icon-color: #c9c8c8;
-  --clipboard-checked-color: #43c743;
+  --language-border-color: #fa9449;
+  --highlight-bg-color: #fffaf3;
+  --highlighter-rouge-color: #6b5032;
+  --highlight-lineno-color: #c88b58;
+  --inline-code-bg: rgba(250, 148, 73, 0.12);
+  --code-color: #4b3926;
+  --code-header-text-color: #fa9449;
+  --code-header-muted-color: #f3e1ca;
+  --code-header-icon-color: #fa9449;
+  --clipboard-checked-color: #6a8d3a;
 
   [class^='prompt-'] {
     --link-underline-color: rgb(219, 216, 216);
@@ -130,8 +126,8 @@
 
   .highlight,
   .highlight .w {
-    color: #24292f;
-    background-color: #f6f8fa;
+    color: #4b3926;
+    background-color: #fffaf3;
   }
 
   .highlight .k,
