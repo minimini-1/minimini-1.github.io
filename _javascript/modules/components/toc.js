@@ -2,6 +2,7 @@ import { TocMobile as mobile } from './toc/toc-mobile';
 import { TocDesktop as desktop } from './toc/toc-desktop';
 
 const desktopMode = matchMedia('(min-width: 1200px)');
+let refreshTimer = null;
 
 function refresh(e) {
   if (e.matches) {
@@ -13,6 +14,19 @@ function refresh(e) {
   } else {
     mobile.refresh();
   }
+}
+
+function refreshCurrent() {
+  if (document.querySelector('main>article[data-toc="true"]') === null) {
+    return;
+  }
+
+  refresh({ matches: desktopMode.matches });
+}
+
+function scheduleRefresh() {
+  window.clearTimeout(refreshTimer);
+  refreshTimer = window.setTimeout(refreshCurrent, 80);
 }
 
 function init() {
@@ -29,6 +43,12 @@ function init() {
 
   const $tocWrapper = document.getElementById('toc-wrapper');
   $tocWrapper.classList.remove('invisible');
+
+  window.addEventListener('load', scheduleRefresh);
+
+  document.querySelectorAll('article img').forEach((img) => {
+    img.addEventListener('load', scheduleRefresh);
+  });
 
   desktopMode.onchange = refresh;
 }

@@ -246,7 +246,7 @@ div {
       background-color: rgba(128, 128, 128, 0.37);
 
       i {
-        color: white;
+        color: var(--code-color);
       }
     }
   }

@@ -164,8 +164,12 @@ header {
     }
 
     &:hover {
+      color: var(--heading-color);
+      background-color: rgba(250, 148, 73, 0.16);
+      border-color: #d4b277;
+
       &:not(.disabled)::before {
-        color: whitesmoke;
+        color: var(--link-color);
       }
     }
 
