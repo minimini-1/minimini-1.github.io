@@ -121,7 +121,6 @@
         var subnav = document.getElementById('home-subnav');
         if (!subnav) return;
 
-        // Chevron expand/collapse toggle on the HOME button.
         var homeLi = subnav.parentElement;
         var toggle = homeLi ? homeLi.querySelector('.subnav-toggle') : null;
         if (toggle && homeLi) {
@@ -145,7 +144,7 @@
 
         function getOffset() {
           var fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
-          return 3 * fontSize + 12; // topbar (3rem) + small buffer
+          return 3 * fontSize + 12;
         }
 
         function setActive(idx) {
@@ -171,15 +170,11 @@
             document.body.scrollHeight
           );
 
-          // Near bottom: force last.
           if (scrollY + viewportH >= docH - 2) {
             setActive(sections.length - 1);
             return;
           }
 
-          // The activation line sits a bit below the offset so that a section
-          // clicked-to-scroll (which lands at top ≈ offset with fractional
-          // rounding) is unambiguously picked.
           var line = offset + 8;
           var activeIdx = -1;
           for (var i = 0; i < sections.length; i++) {
@@ -190,7 +185,6 @@
           setActive(activeIdx);
         }
 
-        // Smooth scroll on click.
         links.forEach(function (a) {
           a.addEventListener('click', function (e) {
             var target = document.getElementById(a.getAttribute('data-target'));
@@ -218,7 +212,6 @@
         window.addEventListener('resize', onScroll);
         updateActive();
 
-        // Re-run once after layout images load (section offsets may shift).
         window.addEventListener('load', function () {
           updateActive();
           if (location.hash) {
