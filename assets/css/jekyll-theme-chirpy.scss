@@ -52,9 +52,13 @@ main .content > h2,
 main .content > h3,
 main .content > h4,
 main .content > h5,
-main .content > h6,
-#sidebar .site-subtitle {
+main .content > h6 {
   font-family: var(--font-family-site-title) !important;
+}
+
+#sidebar .site-subtitle {
+  font-family: var(--font-family-display) !important;
+  font-style: normal !important;
 }
 
 article > header > h1[data-toc-skip] {
