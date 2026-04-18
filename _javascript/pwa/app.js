@@ -51,5 +51,12 @@ if ('serviceWorker' in navigator) {
         registration.unregister();
       }
     });
+    if (window.caches && caches.keys) {
+      caches.keys().then(function (keys) {
+        keys.forEach(function (key) {
+          caches.delete(key);
+        });
+      });
+    }
   }
 }
