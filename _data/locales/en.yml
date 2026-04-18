@@ -55,6 +55,7 @@ post:
   written_by: By
   posted: Posted
   updated: Updated
+  last_updated: Last updated
   words: words
   pageview_measure: views
   read_time:

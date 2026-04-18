@@ -19,11 +19,29 @@
   <nav class="flex-column flex-grow-1 w-100 ps-0">
     <ul class="nav">
       <!-- home -->
-      <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
+      {% assign is_home = false %}
+      {% if page.layout == 'home' %}{% assign is_home = true %}{% endif %}
+      <li class="nav-item{% if is_home %}{{ " active has-subnav is-open" }}{% endif %}">
         <a href="{{ '/' | relative_url }}" class="nav-link">
           <i class="fa-fw fas fa-home"></i>
           <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
+          {% if is_home %}
+            <button type="button" class="subnav-toggle" aria-label="Toggle sub-menu" aria-expanded="true">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          {% endif %}
         </a>
+        {% if is_home %}
+          <ul class="nav home-subnav" id="home-subnav">
+            <li class="nav-item"><a href="#news" class="nav-link" data-target="news"><span>NEWS</span></a></li>
+            <li class="nav-item"><a href="#education" class="nav-link" data-target="education"><span>EDUCATION</span></a></li>
+            <li class="nav-item"><a href="#publications" class="nav-link" data-target="publications"><span>PUBLICATIONS</span></a></li>
+            <li class="nav-item"><a href="#work-experience" class="nav-link" data-target="work-experience"><span>WORK EXPERIENCE</span></a></li>
+            <li class="nav-item"><a href="#awards" class="nav-link" data-target="awards"><span>AWARDS</span></a></li>
+            <li class="nav-item"><a href="#projects" class="nav-link" data-target="projects"><span>PROJECTS</span></a></li>
+            <li class="nav-item"><a href="#skills" class="nav-link" data-target="skills"><span>SKILLS</span></a></li>
+          </ul>
+        {% endif %}
       </li>
       <!-- the real tabs -->
       {% for tab in site.tabs %}
@@ -95,3 +113,130 @@
   <!-- .sidebar-bottom -->
 </aside>
 <!-- #sidebar -->
+
+{% if is_home %}
+  <script>
+    (function () {
+      function init() {
+        var subnav = document.getElementById('home-subnav');
+        if (!subnav) return;
+
+        // Chevron expand/collapse toggle on the HOME button.
+        var homeLi = subnav.parentElement;
+        var toggle = homeLi ? homeLi.querySelector('.subnav-toggle') : null;
+        if (toggle && homeLi) {
+          toggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var open = homeLi.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          });
+        }
+
+        var links = Array.prototype.slice.call(subnav.querySelectorAll('a.nav-link'));
+        var sections = links
+          .map(function (a) {
+            var el = document.getElementById(a.getAttribute('data-target'));
+            return el ? { link: a, item: a.parentElement, el: el } : null;
+          })
+          .filter(Boolean);
+
+        if (!sections.length) return;
+
+        function getOffset() {
+          var fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+          return 3 * fontSize + 12; // topbar (3rem) + small buffer
+        }
+
+        function setActive(idx) {
+          for (var i = 0; i < sections.length; i++) {
+            if (i === idx) sections[i].item.classList.add('active');
+            else sections[i].item.classList.remove('active');
+          }
+        }
+
+        function getScrollY() {
+          return window.pageYOffset
+            || document.documentElement.scrollTop
+            || document.body.scrollTop
+            || 0;
+        }
+
+        function updateActive() {
+          var offset = getOffset();
+          var scrollY = getScrollY();
+          var viewportH = window.innerHeight;
+          var docH = Math.max(
+            document.documentElement.scrollHeight,
+            document.body.scrollHeight
+          );
+
+          // Near bottom: force last.
+          if (scrollY + viewportH >= docH - 2) {
+            setActive(sections.length - 1);
+            return;
+          }
+
+          // The activation line sits a bit below the offset so that a section
+          // clicked-to-scroll (which lands at top ≈ offset with fractional
+          // rounding) is unambiguously picked.
+          var line = offset + 8;
+          var activeIdx = -1;
+          for (var i = 0; i < sections.length; i++) {
+            var top = sections[i].el.getBoundingClientRect().top;
+            if (top <= line) activeIdx = i;
+            else break;
+          }
+          setActive(activeIdx);
+        }
+
+        // Smooth scroll on click.
+        links.forEach(function (a) {
+          a.addEventListener('click', function (e) {
+            var target = document.getElementById(a.getAttribute('data-target'));
+            if (!target) return;
+            e.preventDefault();
+            var offset = getOffset();
+            var top = target.getBoundingClientRect().top + getScrollY() - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+            history.replaceState(null, '', '#' + a.getAttribute('data-target'));
+          });
+        });
+
+        var ticking = false;
+        function onScroll() {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(function () {
+            updateActive();
+            ticking = false;
+          });
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        document.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        updateActive();
+
+        // Re-run once after layout images load (section offsets may shift).
+        window.addEventListener('load', function () {
+          updateActive();
+          if (location.hash) {
+            var hashEl = document.getElementById(location.hash.slice(1));
+            if (hashEl) {
+              var top = hashEl.getBoundingClientRect().top + getScrollY() - getOffset();
+              window.scrollTo({ top: top, behavior: 'auto' });
+              updateActive();
+            }
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+{% endif %}

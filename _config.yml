@@ -134,9 +134,9 @@ assets:
     env: # [development | production]
 
 pwa:
-  enabled: true # The option for PWA feature (installable)
+  enabled: false # Disable PWA registration for direct fresh-content loads
   cache:
-    enabled: true # The option for PWA offline cache
+    enabled: false # Disable the offline cache and update prompt flow
     # Paths defined here will be excluded from the PWA cache.
     # Usually its value is the `baseurl` of another website that
     # shares the same domain name as the current website.

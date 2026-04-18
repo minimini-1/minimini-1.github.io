@@ -3,7 +3,7 @@ import Toast from 'bootstrap/js/src/toast';
 if ('serviceWorker' in navigator) {
   // Get Jekyll config from URL parameters
   const src = new URL(document.currentScript.src);
-  const register = src.searchParams.get('register');
+  const register = src.searchParams.get('register') === 'true';
   const baseUrl = src.searchParams.get('baseurl');
 
   if (register) {

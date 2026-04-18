@@ -23,19 +23,11 @@ script_includes:
   <header>
     <h1 data-toc-skip>{{ single_post.title }}</h1>
     <div class="post-meta text-muted">
-      <!-- published date -->
+      {% assign display_date = single_post.last_modified_at | default: single_post.date %}
       <span>
-        {{ site.data.locales[lang].post.posted }}
-        {% include datetime.html date=single_post.date tooltip=true lang=lang %}
+        {{ site.data.locales[lang].post.last_updated | default: 'Last updated' }}
+        {% include datetime.html date=display_date tooltip=true lang=lang %}
       </span>
-
-      <!-- lastmod date -->
-      {% if single_post.last_modified_at and single_post.last_modified_at != single_post.date %}
-        <span>
-          {{ site.data.locales[lang].post.updated }}
-          {% include datetime.html date=single_post.last_modified_at tooltip=true lang=lang %}
-        </span>
-      {% endif %}
 
       {% if single_post.image %}
         {% capture src %}src="{{ single_post.image.path | default: single_post.image }}"{% endcapture %}

@@ -2,9 +2,165 @@
 ---
 
 @use 'main
-{%- if jekyll.environment == 'production' -%}
+{%- if jekyll.environment == ' production ' -%}
   .bundle
 {%- endif -%}
 ';
 
 /* append your custom style below */
+
+:root {
+  --font-family-display: 'Noto Sans', sans-serif;
+  --font-family-site-title: 'Noto Serif', serif;
+}
+
+body,
+button,
+input,
+select,
+textarea,
+#sidebar .site-subtitle,
+#topbar-title,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h1.dynamic-title,
+article > header > h1[data-toc-skip],
+article .post-meta,
+main .content,
+main .content p,
+main .content li,
+main .content a,
+main .content strong,
+main .content em {
+  font-family: var(--font-family-display) !important;
+}
+
+#sidebar .site-title {
+  font-family: var(--font-family-site-title) !important;
+}
+
+#sidebar .nav-link span {
+  font-family: var(--font-family-site-title) !important;
+}
+
+article > header > h1[data-toc-skip],
+main .content > h2,
+main .content > h3,
+main .content > h4,
+main .content > h5,
+main .content > h6,
+#sidebar .site-subtitle {
+  font-family: var(--font-family-site-title) !important;
+}
+
+article > header > h1[data-toc-skip] {
+  font-weight: 700 !important;
+}
+
+/* Chevron toggle on HOME for expand/collapse */
+#sidebar ul li.nav-item.has-subnav > a.nav-link {
+  position: relative;
+
+  .subnav-toggle {
+    margin-left: auto;
+    background: transparent;
+    border: none;
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.4rem;
+    color: inherit;
+    opacity: 0.7;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    i {
+      font-size: 0.7rem;
+      margin-right: 0 !important;
+      opacity: 1;
+      transition: transform 0.25s ease;
+    }
+
+    &:hover {
+      opacity: 1;
+      background-color: rgba(0, 0, 0, 0.06);
+    }
+  }
+}
+
+#sidebar ul li.nav-item.has-subnav.is-open > a.nav-link .subnav-toggle i {
+  transform: rotate(0deg);
+}
+#sidebar ul li.nav-item.has-subnav:not(.is-open) > a.nav-link .subnav-toggle i {
+  transform: rotate(-90deg);
+}
+
+/* Collapse subnav when not open */
+#sidebar ul li.nav-item.has-subnav:not(.is-open) > .home-subnav {
+  display: none !important;
+}
+
+/* Home sub-nav — dashed vertical rail aligned with HOME icon, text under HOME label */
+#sidebar ul.home-subnav {
+  display: block !important;
+  list-style: none;
+  // Rail sits where HOME label begins (after the icon + icon margin-right).
+  margin: 0.3rem 0 0.25rem 1.6rem;
+  padding: 0;
+  border-left: 1px dashed var(--sidebar-muted-color, rgba(0, 0, 0, 0.25));
+
+  li.nav-item {
+    display: block !important;
+    width: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-top: 0 !important;
+    opacity: 1;
+    background-color: transparent !important;
+
+    a.nav-link {
+      display: block !important;
+      padding: 0.24rem 0.5rem 0.24rem 1.9rem !important;
+      margin-left: -1px;
+      border-left: 2px solid transparent;
+      border-radius: 0 !important;
+      background-color: transparent !important;
+      color: var(--sidebar-muted-color, inherit) !important;
+      opacity: 0.65;
+
+      span {
+        font-size: 78% !important;
+        letter-spacing: 0.3px !important;
+        font-weight: 500;
+        opacity: 1;
+      }
+
+      &:hover {
+        opacity: 1;
+        color: var(--sidebar-active-color) !important;
+      }
+    }
+
+    &.active > a.nav-link {
+      opacity: 1;
+      color: var(--sidebar-active-color) !important;
+      border-left-color: var(--sidebar-active-color);
+
+      span {
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+[data-mode='dark']
+  #sidebar
+  ul
+  li.nav-item.has-subnav
+  > a.nav-link
+  .subnav-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
