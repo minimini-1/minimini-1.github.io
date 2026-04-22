@@ -2,7 +2,7 @@
 ---
 
 @use 'main
-{%- if jekyll.environment == 'production' -%}
+{%- if jekyll.environment == ' production ' -%}
   .bundle
 {%- endif -%}
 ';
@@ -167,4 +167,50 @@ article > header > h1[data-toc-skip] {
   > a.nav-link
   .subnav-toggle:hover {
   background-color: rgba(255, 255, 255, 0.08);
+}
+
+#sidebar .sidebar-bottom {
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#sidebar .sidebar-visitor-globe {
+  width: 100%;
+  margin-top: auto;
+  padding-bottom: 0.4rem;
+}
+
+#sidebar .sidebar-visitor-globe__inner {
+  display: grid;
+  place-items: center;
+  width: 8.5rem;
+  height: 8.5rem;
+  margin: 0 auto;
+}
+
+#sidebar .sidebar-visitor-globe .mmvst_outer {
+  width: 100% !important;
+  height: 100% !important;
+  overflow: visible !important;
+}
+
+#sidebar .sidebar-visitor-globe .mmvst_inner {
+  display: block !important;
+  transform: scale(0.45);
+  transform-origin: center;
+}
+
+#sidebar .sidebar-visitor-globe .mmvst_bottom_shadow {
+  display: none !important;
+}
+
+#sidebar .sidebar-visitor-globe a,
+#sidebar .sidebar-visitor-globe a:hover {
+  width: auto;
+  height: auto;
+  margin: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
