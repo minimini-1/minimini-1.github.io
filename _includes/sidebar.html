@@ -21,27 +21,23 @@
       <!-- home -->
       {% assign is_home = false %}
       {% if page.layout == 'home' %}{% assign is_home = true %}{% endif %}
-      <li class="nav-item{% if is_home %}{{ " active has-subnav is-open" }}{% endif %}">
+      <li class="nav-item has-subnav is-open{% if is_home %} active{% endif %}">
         <a href="{{ '/' | relative_url }}" class="nav-link">
           <i class="fa-fw fas fa-home"></i>
           <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
-          {% if is_home %}
             <button type="button" class="subnav-toggle" aria-label="Toggle sub-menu" aria-expanded="true">
               <i class="fas fa-chevron-down"></i>
             </button>
-          {% endif %}
         </a>
-        {% if is_home %}
           <ul class="nav home-subnav" id="home-subnav">
             <li class="nav-item"><a href="#news" class="nav-link" data-target="news"><span>NEWS</span></a></li>
-            <li class="nav-item"><a href="#education" class="nav-link" data-target="education"><span>EDUCATION</span></a></li>
             <li class="nav-item"><a href="#publications" class="nav-link" data-target="publications"><span>PUBLICATIONS</span></a></li>
+            <li class="nav-item"><a href="#education" class="nav-link" data-target="education"><span>EDUCATION</span></a></li>
             <li class="nav-item"><a href="#work-experience" class="nav-link" data-target="work-experience"><span>WORK EXPERIENCE</span></a></li>
             <li class="nav-item"><a href="#awards" class="nav-link" data-target="awards"><span>AWARDS</span></a></li>
             <li class="nav-item"><a href="#projects" class="nav-link" data-target="projects"><span>PROJECTS</span></a></li>
             <li class="nav-item"><a href="#skills" class="nav-link" data-target="skills"><span>SKILLS</span></a></li>
           </ul>
-        {% endif %}
       </li>
       <!-- the real tabs -->
       {% for tab in site.tabs %}
@@ -60,11 +56,8 @@
 
   <div class="sidebar-visitor-globe w-100">
     <div class="sidebar-visitor-globe__inner">
-      <script
-        type="text/javascript"
-        id="mmvst_globe"
-        src="https://mapmyvisitors.com/globe.js?d=6DljRRJOU3-sZbhcZcgU-wBYuMsrclD3UlFG_FbzDD0"
-      ></script>
+      <script type="text/javascript" id="mmvst_globe" 
+      src="//mapmyvisitors.com/globe.js?d=WFq1KHuYqoinBrrSdtVemEP4trpiXLEr0Ymigk5T1IM"></script>
     </div>
   </div>
 
@@ -125,7 +118,6 @@
 </aside>
 <!-- #sidebar -->
 
-{% if is_home %}
   <script>
     (function () {
       function init() {
@@ -144,6 +136,12 @@
         }
 
         var links = Array.prototype.slice.call(subnav.querySelectorAll('a.nav-link'));
+        if (!{{ is_home | jsonify }}) {
+          links.forEach(function (a) {
+            a.href = {{ '/' | relative_url | jsonify }} + '#' + a.getAttribute('data-target');
+          });
+          return;
+        }
         var sections = links
           .map(function (a) {
             var el = document.getElementById(a.getAttribute('data-target'));
@@ -243,4 +241,3 @@
       }
     })();
   </script>
-{% endif %}
