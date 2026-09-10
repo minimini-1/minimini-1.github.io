@@ -30,13 +30,13 @@
             </button>
         </a>
           <ul class="nav home-subnav" id="home-subnav">
-            <li class="nav-item"><a href="#news" class="nav-link" data-target="news"><span>NEWS</span></a></li>
-            <li class="nav-item"><a href="#publications" class="nav-link" data-target="publications"><span>PUBLICATIONS</span></a></li>
-            <li class="nav-item"><a href="#education" class="nav-link" data-target="education"><span>EDUCATION</span></a></li>
-            <li class="nav-item"><a href="#work-experience" class="nav-link" data-target="work-experience"><span>WORK EXPERIENCE</span></a></li>
-            <li class="nav-item"><a href="#awards" class="nav-link" data-target="awards"><span>AWARDS</span></a></li>
-            <li class="nav-item"><a href="#projects" class="nav-link" data-target="projects"><span>PROJECTS</span></a></li>
-            <li class="nav-item"><a href="#skills" class="nav-link" data-target="skills"><span>SKILLS</span></a></li>
+            <li class="nav-item"><a href="{% unless is_home %}{{ '/' | relative_url }}{% endunless %}#news" class="nav-link" data-target="news"><span>NEWS</span></a></li>
+            <li class="nav-item"><a href="{% unless is_home %}{{ '/' | relative_url }}{% endunless %}#publications" class="nav-link" data-target="publications"><span>PUBLICATIONS</span></a></li>
+            <li class="nav-item"><a href="{% unless is_home %}{{ '/' | relative_url }}{% endunless %}#education" class="nav-link" data-target="education"><span>EDUCATION</span></a></li>
+            <li class="nav-item"><a href="{% unless is_home %}{{ '/' | relative_url }}{% endunless %}#work-experience" class="nav-link" data-target="work-experience"><span>WORK EXPERIENCE</span></a></li>
+            <li class="nav-item"><a href="{% unless is_home %}{{ '/' | relative_url }}{% endunless %}#awards" class="nav-link" data-target="awards"><span>AWARDS</span></a></li>
+            <li class="nav-item"><a href="{% unless is_home %}{{ '/' | relative_url }}{% endunless %}#projects" class="nav-link" data-target="projects"><span>PROJECTS</span></a></li>
+            <li class="nav-item"><a href="{% unless is_home %}{{ '/' | relative_url }}{% endunless %}#skills" class="nav-link" data-target="skills"><span>SKILLS</span></a></li>
           </ul>
       </li>
       <!-- the real tabs -->
@@ -57,7 +57,7 @@
   <div class="sidebar-visitor-globe w-100">
     <div class="sidebar-visitor-globe__inner">
       <script type="text/javascript" id="mmvst_globe" 
-      src="//mapmyvisitors.com/globe.js?d=WFq1KHuYqoinBrrSdtVemEP4trpiXLEr0Ymigk5T1IM"></script>
+      src="https://mapmyvisitors.com/globe.js?d=WFq1KHuYqoinBrrSdtVemEP4trpiXLEr0Ymigk5T1IM"></script>
     </div>
   </div>
 
@@ -137,9 +137,6 @@
 
         var links = Array.prototype.slice.call(subnav.querySelectorAll('a.nav-link'));
         if (!{{ is_home | jsonify }}) {
-          links.forEach(function (a) {
-            a.href = {{ '/' | relative_url | jsonify }} + '#' + a.getAttribute('data-target');
-          });
           return;
         }
         var sections = links
