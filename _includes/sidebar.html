@@ -56,8 +56,29 @@
 
   <div class="sidebar-visitor-globe w-100">
     <div class="sidebar-visitor-globe__inner">
-      <script type="text/javascript" id="mmvst_globe" 
-      src="https://mapmyvisitors.com/globe.js?d=WFq1KHuYqoinBrrSdtVemEP4trpiXLEr0Ymigk5T1IM"></script>
+      <iframe
+        id="visitor-globe-frame"
+        title="Visitor locations"
+        width="136"
+        height="136"
+        style="border: 0; display: block;"
+        data-src="{{ '/assets/html/visitor-globe.html' | relative_url }}"
+      ></iframe>
+      <script>
+        (function () {
+          function loadVisitorGlobe() {
+            var frame = document.getElementById('visitor-globe-frame');
+            if (frame && !frame.hasAttribute('src')) {
+              frame.src = frame.getAttribute('data-src');
+            }
+          }
+          if (document.readyState === 'complete') {
+            loadVisitorGlobe();
+          } else {
+            window.addEventListener('load', loadVisitorGlobe, { once: true });
+          }
+        })();
+      </script>
     </div>
   </div>
 
