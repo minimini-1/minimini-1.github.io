@@ -38,7 +38,7 @@ script_includes:
 
       {% if page.image %}
         {% capture src %}src="{{ page.image.path | default: page.image }}"{% endcapture %}
-        {% capture class %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
+        {% capture class %}class="preview-img{% if page.categories contains 'publications' %} publication-preview{% endif %}{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
         {% capture alt %}alt="{{ page.image.alt | xml_escape | default: "Preview Image" }}"{% endcapture %}
 
         {% if page.image.lqip %}

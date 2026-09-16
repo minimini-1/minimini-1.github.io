@@ -45,6 +45,34 @@ header {
   }
 }
 
+a.publication-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  padding: clamp(0.5rem, 1.2vw, 1rem);
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+  background-color: var(--img-bg);
+  border: 1px solid var(--main-border-color);
+  border-radius: 1rem;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 38rem;
+    object-fit: contain;
+    object-position: center;
+
+    @include bp.lt(bp.get(md)) {
+      max-height: 24rem;
+    }
+  }
+}
+
 .post-tail-wrapper {
   @extend %text-sm;
 
