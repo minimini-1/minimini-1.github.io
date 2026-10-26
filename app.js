@@ -10,6 +10,16 @@
   document.addEventListener('click', event => { if (!navigationMore.contains(event.target) || event.target.closest('.nav-more a')) navigationMore.open = false; });
   navigationMore.addEventListener('keydown', event => { if (event.key === 'Escape') { navigationMore.open = false; $('summary', navigationMore).focus(); } });
   let activeYear = 'all';
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const transitions = new WeakMap();
+  function revealContent(element) {
+    transitions.get(element)?.cancel();
+    if (motionPreference.matches || !element.animate) return;
+    transitions.set(element, element.animate([
+      { opacity: 0, transform: 'translateY(8px)' },
+      { opacity: 1, transform: 'none' }
+    ], { duration: 280, easing: 'cubic-bezier(.2,.7,.2,1)' }));
+  }
 
   const venueShort = p => {
     if (p.slug === 'craft') return 'SIGGRAPH ASIA · 2026';
@@ -140,7 +150,10 @@
       const selected = tab.dataset.panel === panelId;
       tab.setAttribute('aria-selected', selected);
       tab.tabIndex = selected ? 0 : -1;
-      $('#' + tab.getAttribute('aria-controls')).hidden = !selected;
+      const panel = $('#' + tab.getAttribute('aria-controls'));
+      const changed = panel.hidden;
+      panel.hidden = !selected;
+      if (selected && changed) revealContent(panel);
       if (selected && focus) tab.focus();
     });
   }
@@ -160,9 +173,11 @@
     });
   });
   $$('.chip').forEach(chip => chip.addEventListener('click', () => {
+    if (activeYear === chip.dataset.year) return;
     activeYear = chip.dataset.year;
     $$('.chip').forEach(c => { c.classList.toggle('selected', c === chip); c.setAttribute('aria-pressed', c === chip); });
     renderPublications();
+    revealContent($('#publication-grid'));
   }));
 
   function renderPaper(slug) {
@@ -202,6 +217,7 @@
     const paper = requestedPaper && content.publications.some(p => p.slug === requestedPaper) ? requestedPaper : null;
     const viewId = requestedPaper ? (paper ? 'paper' : 'research') : (aliases[hash] || hash);
     const view = $('.view#' + (['about','research','news','background','activities','paper'].includes(viewId) ? viewId : 'about'));
+    const previousView = $$('.view').find(s => !s.hidden);
     $$('.view').forEach(s => { s.hidden = s !== view; });
     $$('.glass-nav a').forEach(a => { const active = a.hash === '#' + (paper ? 'research' : view.id); a.classList.toggle('active', active); if (active) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
     document.body.dataset.view = view.id;
@@ -212,7 +228,11 @@
     if (activityAliases[hash]) selectTab($('.activity-tabs'), activityAliases[hash]);
     if (paper) renderPaper(paper);
     document.title = view.id === 'about' ? 'Jongmin Gim — Computer Vision & Generative AI' : `${paper ? content.publications.find(p => p.slug === paper)?.title || 'Research' : ({research:'Research',news:'News',background:'Education & Experience',activities:'Academic Activities'})[view.id]} — Jongmin Gim`;
-    if (!initial) { window.scrollTo({top:0,behavior:'instant'}); $('#main').focus({preventScroll:true}); }
+    if (!initial) {
+      window.scrollTo({top:0,behavior:'instant'});
+      $('#main').focus({preventScroll:true});
+      if (previousView !== view || paper) revealContent(view);
+    }
   }
 
   $('#copyright-year').textContent = new Date().getFullYear();
