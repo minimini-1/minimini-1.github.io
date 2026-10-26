@@ -82,7 +82,7 @@ main{width:calc(100% - 40px);max-width:480px;flex:1;position:relative;z-index:2;
 @keyframes header-breathe{from{background-size:max(100vw,900px) 340px;background-position:100% 100%}to{background-size:max(120vw,1120px) 420px;background-position:calc(100% + 24px) calc(100% + 8px)}}
 @media(prefers-reduced-motion:no-preference){
  .about-view::after,.content-view:not(.paper-view) .section-heading::after{animation:header-breathe var(--header-duration,12s) linear infinite alternate}
- #research{--header-duration:10s}#news{--header-duration:10s}#background{--header-duration:14s}#activities{--header-duration:12s}
+ #research{--header-duration:10s}#news{--header-duration:7s}#background{--header-duration:14s}#activities{--header-duration:12s}
 }
 @media(prefers-reduced-motion:reduce){.about-view::after,.section-heading::after,.paper-heading::after{animation:none!important}.citation-toggle svg{transition:none}}
 
