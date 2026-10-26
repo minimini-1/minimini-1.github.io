@@ -122,7 +122,7 @@ main{width:calc(100% - 40px);max-width:480px;flex:1;position:relative;z-index:2;
 
 .research-toolbar{display:block}.research-years{flex-wrap:nowrap;margin:0}.research-toolbar .small-note{margin:12px 0 0;text-align:right}
 
-.about-object{position:absolute;z-index:1;top:18px;left:50%;width:300px;height:140px;transform:translateX(-50%);pointer-events:none}
+.about-object{position:absolute;z-index:1;top:6px;left:50%;width:300px;height:140px;transform:translateX(-50%);pointer-events:none}
 .visual-patches{position:absolute;inset:0}
 .image-patch{position:absolute;left:calc(22px + var(--col)*33px);top:calc(23px + var(--row)*33px);display:block;width:30px;height:30px;border-radius:3px;background-image:url("assets/cast_accv.jpg");background-size:446.5px 204.6px;background-position:calc(-150px - var(--col)*33px) calc(-104px - var(--row)*33px);box-shadow:0 0 0 1px #ffffffa0,0 3px 8px #30473518;filter:saturate(.7)}
 .patch-connector{position:absolute;top:69px;left:139px;display:flex;gap:5px;align-items:center;height:6px}
@@ -135,7 +135,7 @@ main{width:calc(100% - 40px);max-width:480px;flex:1;position:relative;z-index:2;
 @keyframes token-mix{0%,100%{transform:translate(0,0) rotate(0)}45%,55%{transform:translate(var(--mix-x),var(--mix-y)) rotate(var(--angle))}}
 @keyframes token-connect{0%,12%,84%,100%{opacity:.8}30%,68%{opacity:0}}
 @media(prefers-reduced-motion:no-preference){.image-patch{animation:patch-mix 12s cubic-bezier(.45,0,.25,1) var(--delay) infinite}.text-tokens span{animation:token-mix 12s cubic-bezier(.45,0,.25,1) var(--delay) infinite}.patch-connector{animation:token-connect 12s ease-in-out infinite}}
-@media(min-width:768px){.about-object{top:24px}}
+@media(min-width:768px){.about-object{top:12px}}
 :root[data-theme=dark] .image-patch{box-shadow:0 0 0 1px #d9e4d45c,0 3px 8px #10241930}
 :root[data-theme=dark] .text-tokens span{background:#bdd0ad29;border-color:#d9e6ce66;color:#eef2df}
 :root[data-theme=dark] .text-tokens span:nth-child(2),:root[data-theme=dark] .text-tokens span:nth-child(5){background:#b2d0e633;color:#e4f0f7}
