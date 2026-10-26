@@ -22,12 +22,41 @@
   }
 
   const multimodalScene = $('.multimodal-scene');
+  const sceneTiles = $$('.image-patch,.text-tokens span', multimodalScene);
+  let sceneAnimations = [];
+  let sceneTransition = 0;
+  function stopSceneTransition() {
+    sceneTransition++;
+    sceneAnimations.forEach(animation => animation.cancel());
+    sceneAnimations = [];
+    multimodalScene.classList.remove('is-transitioning');
+  }
   multimodalScene.addEventListener('click', () => {
+    const previous = sceneTiles.map(tile => tile.getBoundingClientRect());
+    stopSceneTransition();
+    const transition = sceneTransition;
+    multimodalScene.classList.add('is-transitioning');
     const expanded = multimodalScene.classList.toggle('is-expanded');
     multimodalScene.setAttribute('aria-pressed', expanded);
     multimodalScene.setAttribute('aria-label', expanded ? 'Restore 3 by 3 image grid' : 'Expand image patches into a row');
     multimodalScene.title = expanded ? 'Click to restore grid' : 'Click to expand';
+    if (motionPreference.matches || !multimodalScene.animate) {
+      multimodalScene.classList.remove('is-transitioning');
+      return;
+    }
+    sceneAnimations = sceneTiles.map((tile, index) => {
+      const target = tile.getBoundingClientRect();
+      return tile.animate([
+        { transform: `translate(${previous[index].left - target.left}px, ${previous[index].top - target.top}px)` },
+        { transform: 'translate(0,0)' }
+      ], { duration: 2000, easing: 'cubic-bezier(.42,0,.58,1)' });
+    });
+    Promise.allSettled(sceneAnimations.map(animation => animation.finished)).then(() => {
+      if (transition === sceneTransition) multimodalScene.classList.remove('is-transitioning');
+    });
   });
+  window.addEventListener('resize', stopSceneTransition);
+  motionPreference.addEventListener('change', stopSceneTransition);
 
   const navigation = $('.glass-nav');
   const navigationGlass = $('.nav-glider');
