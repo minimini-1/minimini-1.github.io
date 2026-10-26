@@ -22,16 +22,11 @@
   }
 
   const multimodalScene = $('.multimodal-scene');
-  let sceneAnimations = [];
   multimodalScene.addEventListener('click', () => {
-    sceneAnimations.forEach(animation => animation.cancel());
-    sceneAnimations = [];
-    if (motionPreference.matches || !multimodalScene.animate) return;
-    sceneAnimations = $$('.image-patch,.text-tokens span', multimodalScene).map((tile, index) => tile.animate([
-      { transform: 'translateY(0)' },
-      { transform: 'translateY(-3px)', offset: .4 },
-      { transform: 'translateY(0)' }
-    ], { duration: 650, delay: index * 45, easing: 'cubic-bezier(.3,0,.25,1)' }));
+    const expanded = multimodalScene.classList.toggle('is-expanded');
+    multimodalScene.setAttribute('aria-pressed', expanded);
+    multimodalScene.setAttribute('aria-label', expanded ? 'Restore 3 by 3 image grid' : 'Expand image patches into a row');
+    multimodalScene.title = expanded ? 'Click to restore grid' : 'Click to expand';
   });
 
   const navigation = $('.glass-nav');
