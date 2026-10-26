@@ -83,6 +83,10 @@
     </article>`).join('');
     $('#research-status').textContent = `${papers.length} publications shown${activeYear === 'all' ? '' : ' for ' + activeYear}.`;
   }
+  $$('.research-year').forEach(button => {
+    const count = content.publications.filter(p => button.dataset.year === 'all' || venueShort(p).includes(button.dataset.year)).length;
+    $('.year-count', button).textContent = String(count).padStart(2, '0');
+  });
   renderPublications();
   const newsSource = document.createElement('div');
   newsSource.innerHTML = content.news;
@@ -215,10 +219,10 @@
       });
     });
   });
-  $$('.chip').forEach(chip => chip.addEventListener('click', () => {
-    if (activeYear === chip.dataset.year) return;
-    activeYear = chip.dataset.year;
-    $$('.chip').forEach(c => { c.classList.toggle('selected', c === chip); c.setAttribute('aria-pressed', c === chip); });
+  $$('.research-year').forEach(button => button.addEventListener('click', () => {
+    if (activeYear === button.dataset.year) return;
+    activeYear = button.dataset.year;
+    $$('.research-year').forEach(item => item.setAttribute('aria-pressed', item === button));
     renderPublications();
     revealContent($('#publication-grid'));
   }));

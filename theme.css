@@ -30,7 +30,7 @@
 :root[data-theme=dark] .chip.selected{background:#4b653a;border-color:#adcc91;color:#edf5e5}
 :root[data-theme=dark] .tabs{border-color:#617a51;scrollbar-color:#8faa73 transparent}
 :root[data-theme=dark] .tabs button{color:#c1d5b0}
-:root[data-theme=dark] .tabs [aria-selected=true]{color:#e0efd3;border-bottom-color:#b7cea4}
+:root[data-theme=dark] .tabs :is([aria-selected=true],[aria-pressed=true]){color:#e0efd3;border-bottom-color:#b7cea4}
 :root[data-theme=dark] :is(.news-item,.activity-record){border-color:#617b50}
 :root[data-theme=dark] .skill-tags span{background:#384c2b;border-color:#758f61;color:#d3e2c6}
 :root[data-theme=dark] #research .section-heading{--tint:#3a5268}
