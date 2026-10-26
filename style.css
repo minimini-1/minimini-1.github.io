@@ -121,3 +121,12 @@ main{width:calc(100% - 40px);max-width:480px;flex:1;position:relative;z-index:2;
 @media(min-width:768px){.header-controls{--control-size:60px}}
 
 .research-toolbar{display:block}.research-years{flex-wrap:nowrap;margin:0}.research-toolbar .small-note{margin:12px 0 0;text-align:right}
+
+.about-object{position:absolute;z-index:1;top:18px;left:50%;width:240px;height:143px;transform:translateX(-50%);pointer-events:none}
+.about-camcorder{position:relative;display:block;width:100%;height:auto;filter:drop-shadow(0 5px 5px #2e463414);transform-origin:50% 60%}
+.about-object-shadow{position:absolute;bottom:12px;left:28%;width:44%;height:8px;border-radius:50%;background:#2947321a;filter:blur(5px)}
+@keyframes camcorder-float{0%,100%{transform:translateY(2px) rotate(-1deg)}50%{transform:translateY(-5px) rotate(1deg)}}
+@keyframes camcorder-shadow{0%,100%{transform:scaleX(1);opacity:.65}50%{transform:scaleX(.85);opacity:.4}}
+@media(min-width:768px){.about-object{top:16px;width:270px;height:160px}}
+@media(prefers-reduced-motion:no-preference){.about-camcorder{animation:camcorder-float 7s ease-in-out infinite}.about-object-shadow{animation:camcorder-shadow 7s ease-in-out infinite}}
+:root[data-theme=dark] .about-object-shadow{background:#0d1f2180}
