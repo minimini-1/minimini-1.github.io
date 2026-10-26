@@ -9,18 +9,6 @@
   const navigationMore = $('.nav-more');
   document.addEventListener('click', event => { if (!navigationMore.contains(event.target)) navigationMore.open = false; });
   navigationMore.addEventListener('keydown', event => { if (event.key === 'Escape') { navigationMore.open = false; $('summary', navigationMore).focus(); } });
-  function alignAboutEdge() {
-    const about = $('#about');
-    if (about.hidden) return;
-    const mobile = window.matchMedia('(max-width:767px)').matches;
-    const contentTop = $(mobile ? '.hero-copy' : '.portrait-block').getBoundingClientRect().top;
-    const sectionTop = about.getBoundingClientRect().top;
-    about.style.setProperty('--about-edge-top', Math.max(mobile ? 0 : 10, Math.round(contentTop - sectionTop - 24)) + 'px');
-  }
-  const aboutLayoutObserver = new ResizeObserver(alignAboutEdge);
-  aboutLayoutObserver.observe($('.about-main'));
-  aboutLayoutObserver.observe($('.portrait-block'));
-  document.fonts.ready.then(alignAboutEdge);
   let activeYear = 'all';
 
   const venueShort = p => {
@@ -198,7 +186,6 @@
     $$('.view').forEach(s => { s.hidden = s !== view; });
     $$('.glass-nav a').forEach(a => { const active = a.hash === '#' + (paper ? 'research' : view.id); a.classList.toggle('active', active); if (active) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
     document.body.dataset.view = view.id;
-    if (view.id === 'about') alignAboutEdge();
     const more = $('.nav-more');
     more.classList.toggle('active', ['background','activities'].includes(view.id));
     more.open = false;
