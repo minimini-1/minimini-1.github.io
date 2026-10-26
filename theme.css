@@ -1,7 +1,7 @@
 :root{color-scheme:only light}
 .theme-toggle{position:relative;z-index:1;flex:none;display:grid;place-items:center;width:44px;height:44px;margin:0;padding:0;appearance:none;-webkit-appearance:none;border:0;border-radius:50%;background:transparent;color:#344d3e}
-.theme-toggle::before{content:"";position:absolute;inset:3px;border:1px solid #ffffffb8;border-radius:50%;background:linear-gradient(145deg,#ffffff78,#ffffff18 55%,#e7f0dd40);box-shadow:inset 0 1px 1px #fff,0 2px 6px #29482c12;pointer-events:none;transition:background .18s,transform .18s}
-.theme-toggle:hover::before{background:linear-gradient(145deg,#ffffffa6,#ffffff28 55%,#e7f0dd66)}
+.theme-toggle::before{content:"";position:absolute;inset:0;border:1px solid #ffffffdf;border-radius:50%;background:linear-gradient(150deg,#ffffff9c,#ffffff38 55%,#edf5ed70);backdrop-filter:blur(22px) saturate(180%) brightness(1.06);-webkit-backdrop-filter:blur(22px) saturate(180%) brightness(1.06);box-shadow:inset 0 2px 1px #fffffff2,inset 0 -1px 1px #40604c1a,0 8px 28px #233d3220,0 1px 3px #233d3212;pointer-events:none;transition:filter .18s,transform .18s}
+.theme-toggle:hover::before{filter:brightness(1.06)}
 .theme-toggle:active::before{transform:scale(.94)}
 .theme-toggle:hover{background:transparent}
 .theme-toggle svg{position:relative;display:none;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
@@ -48,8 +48,7 @@
 :root[data-theme=dark] .glass-nav:not(.glass-ready) a.active{background:#d5edc226;box-shadow:inset 0 1px 1px #f4ffe640}
 :root[data-theme=dark] .nav-glider{border-color:#e7f6d761;background:linear-gradient(145deg,#efffe52e,#ffffff0a 55%,#cdeeb51a);box-shadow:inset 0 1px 1px #eaffdb59,inset 0 -1px 2px #0004,0 3px 9px #0003}
 :root[data-theme=dark] .nav-glider::after{background:linear-gradient(110deg,#ffffff24,#ffffff00 70%)}
-:root[data-theme=dark] .theme-toggle::before{border-color:#e0f0cf4d;background:linear-gradient(145deg,#edffdc26,#ffffff05 60%,#b6d39312);box-shadow:inset 0 1px 1px #ecffda3d,0 2px 7px #0002}
-:root[data-theme=dark] .theme-toggle:hover::before{background:linear-gradient(145deg,#edffdc3b,#ffffff10 60%,#b6d39322)}
+:root[data-theme=dark] .theme-toggle::before{border-color:#d8ebcf48;background:linear-gradient(145deg,#3f5c40eb,#304d3ae0 55%,#4a6438eb);backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);box-shadow:inset 0 2px 1px #efffe326,inset 0 -1px 1px #0003,0 8px 28px #0004}
 :root[data-theme=dark] .nav-more-list{background:#354a35f5;border-color:#94ad7d55;box-shadow:0 10px 35px #0005}
 :root[data-theme=dark] .nav-more-list a.active{background:#d5edc21a;box-shadow:none}
 :root[data-theme=dark] .citation{background:#32452e;border-color:#7d9866}
@@ -67,7 +66,7 @@
 :root[data-theme=dark] .noscript-note{background:#453d28;color:#e7e1c8}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){:root[data-theme=dark] .glass-nav{background:#354d39}:root[data-theme=dark] .nav-glider{background:#577349}}
 
-.theme-control{position:relative;z-index:3;flex:none;width:44px;height:44px;margin-left:6px}
+.theme-control{position:relative;z-index:3;flex:none;width:44px;height:44px;pointer-events:auto}
 .theme-menu{position:absolute;right:0;top:calc(100% + 12px);width:180px;max-width:calc(100vw - 32px);padding:7px;border:1px solid #ffffffde;border-radius:14px;background:#f5f8eef5;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 8px 28px #233d3226}
 .theme-menu button{display:flex;align-items:center;justify-content:space-between;gap:18px;width:100%;min-height:44px;padding:10px 12px;border:0;border-radius:8px;background:transparent;color:#344d3e;font:14px/20px var(--sans);text-align:left}
 .theme-menu button::after{content:"✓";visibility:hidden;font-size:15px}
@@ -79,3 +78,5 @@
 :root[data-theme=dark] .theme-menu button{color:#e5f2d9}
 :root[data-theme=dark] .theme-menu button[aria-checked=true]{background:#c8e7a926}
 :root[data-theme=dark] .theme-menu button:hover{background:#c8e7a938}
+
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.theme-toggle::before{background:#f2f5ecf2}:root[data-theme=dark] .theme-toggle::before{background:#354d39}}
