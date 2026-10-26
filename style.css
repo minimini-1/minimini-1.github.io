@@ -131,10 +131,10 @@ main{width:calc(100% - 40px);max-width:480px;flex:1;position:relative;z-index:2;
 .text-tokens span{position:absolute;left:var(--x);top:var(--y);display:block;padding:5px 8px;border:1px solid #fbfff3c9;border-radius:5px;background:#f9f8ed99;box-shadow:0 2px 5px #3047350a;color:#4b634c;font:12px/16px var(--mono)}
 .text-tokens span:nth-child(2),.text-tokens span:nth-child(5){background:#d6e4e799;color:#435b66}
 .text-tokens span:nth-child(4){background:#e9daba99;color:#746344}
-@keyframes patch-mix{0%,100%{transform:translate(0,0) rotate(0)}45%,55%{transform:translate(var(--mix-x),var(--mix-y)) rotate(var(--angle))}}
-@keyframes token-mix{0%,100%{transform:translate(0,0) rotate(0)}45%,55%{transform:translate(var(--mix-x),var(--mix-y)) rotate(var(--angle))}}
+@keyframes patch-mix{0%,12%,88%,100%{transform:translate(0,0) rotate(0)}44%,56%{transform:translate(var(--mix-x),var(--mix-y)) rotate(var(--angle))}}
+@keyframes token-mix{0%,12%,88%,100%{transform:translate(0,0) rotate(0)}44%,56%{transform:translate(var(--mix-x),var(--mix-y)) rotate(var(--angle))}}
 @keyframes token-connect{0%,12%,84%,100%{opacity:.8}30%,68%{opacity:0}}
-@media(prefers-reduced-motion:no-preference){.image-patch{animation:patch-mix 12s cubic-bezier(.45,0,.25,1) var(--delay) infinite}.text-tokens span{animation:token-mix 12s cubic-bezier(.45,0,.25,1) var(--delay) infinite}.patch-connector{animation:token-connect 12s ease-in-out infinite}}
+@media(prefers-reduced-motion:no-preference){.image-patch[data-mix]{animation:patch-mix 20s cubic-bezier(.45,0,.25,1) var(--delay) infinite}.text-tokens span[data-mix]{animation:token-mix 20s cubic-bezier(.45,0,.25,1) var(--delay) infinite}.patch-connector{animation:token-connect 20s ease-in-out infinite}}
 @media(min-width:768px){.about-object{top:12px}}
 :root[data-theme=dark] .image-patch{box-shadow:0 0 0 1px #d9e4d45c,0 3px 8px #10241930}
 :root[data-theme=dark] .text-tokens span{background:#bdd0ad29;border-color:#d9e6ce66;color:#eef2df}
@@ -143,9 +143,9 @@ main{width:calc(100% - 40px);max-width:480px;flex:1;position:relative;z-index:2;
 :root[data-theme=dark] .patch-connector i{background:#d4e3c888}
 
 .glass-nav::before,.glass-nav::after,.theme-toggle::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none}
-.glass-nav::before{background-image:radial-gradient(ellipse at 25% 20%,#c1dcd866,transparent 55%),radial-gradient(ellipse at 75% 80%,#e6d8b552,transparent 55%);background-size:180% 220%,200% 240%;background-position:0% 30%,100% 70%;opacity:.65}
-.glass-nav::after,.theme-toggle::after{background-image:linear-gradient(110deg,transparent 35%,#ffffff00 42%,#ffffff6b 49%,#ffffff0a 57%,transparent 65%);background-size:280% 100%;background-position:120% 0;opacity:.65}
+.glass-nav::before{background-image:radial-gradient(ellipse at 25% 20%,#c1dcd866,transparent 55%),radial-gradient(ellipse at 75% 80%,#e6d8b552,transparent 55%);background-size:180% 220%,200% 240%;background-position:0% 30%,100% 70%;opacity:.45}
+.glass-nav::after,.theme-toggle::after{background-image:linear-gradient(110deg,transparent 35%,#ffffff00 42%,#ffffff6b 49%,#ffffff0a 57%,transparent 65%);background-size:280% 100%;background-position:120% 0;opacity:.35}
 @keyframes glass-current{0%,100%{background-position:0% 30%,100% 70%}50%{background-position:100% 70%,0% 30%}}
-@keyframes glass-sheen{0%,12%{background-position:120% 0;opacity:0}22%{opacity:.65}70%{opacity:.65}84%,100%{background-position:-40% 0;opacity:0}}
-@media(prefers-reduced-motion:no-preference){.glass-nav::before{animation:glass-current 13s ease-in-out infinite}.glass-nav::after,.theme-toggle::after{animation:glass-sheen 9s ease-in-out infinite}}
+@keyframes glass-sheen{0%,12%{background-position:120% 0;opacity:0}22%{opacity:.35}70%{opacity:.35}84%,100%{background-position:-40% 0;opacity:0}}
+@media(prefers-reduced-motion:no-preference){.glass-nav::before{animation:glass-current 20s ease-in-out infinite}.glass-nav::after,.theme-toggle::after{animation:glass-sheen 16s ease-in-out infinite}}
 @media(prefers-reduced-motion:reduce){.glass-nav::after,.theme-toggle::after{display:none}}
