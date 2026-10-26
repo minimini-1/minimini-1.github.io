@@ -49,7 +49,7 @@ window.SITE_CONTENT = {
           "label": "CRAFT"
         }
       ],
-      "citation": "1\n2\n3\n4\n5\n6\n@article{park2026craft,\n  title={CRAFT: Constrained Reward via Attention Fine-Tuning for Subject Personalization without Composed Targets},\n  author={Park, Jihun and Lee, Kyoungmin and Gim, Jongmin and Jo, Hyeonseo and Kim, Jaeyeul and Zou, Han and Zhan, Zhenpeng and Zhang, Yan and Im, Sunghoon},\n  journal={ACM SIGGRAPH Asia 2026},\n  year={2026}\n}"
+      "citation": "@article{park2026craft,\n  title={CRAFT: Constrained Reward via Attention Fine-Tuning for Subject Personalization without Composed Targets},\n  author={Park, Jihun and Lee, Kyoungmin and Gim, Jongmin and Jo, Hyeonseo and Kim, Jaeyeul and Zou, Han and Zhan, Zhenpeng and Zhang, Yan and Im, Sunghoon},\n  journal={ACM SIGGRAPH Asia 2026},\n  year={2026}\n}"
     },
     {
       "slug": "svd-style",
@@ -64,7 +64,7 @@ window.SITE_CONTENT = {
           "label": "arXiv"
         }
       ],
-      "citation": "1\n2\n3\n4\n5\n6\n@article{lee2025svdstyle,\n  title={A Training-Free Style-Personalization via SVD-Based Feature Decomposition},\n  author={Lee, Kyoungmin and Park, Jihun and Gim, Jongmin and Choi, Wonhyeok and Hwang, Kyumin and Kim, Jaeyeul and Im, Sunghoon},\n  journal={arXiv preprint arXiv:2507.04482},\n  year={2025}\n}"
+      "citation": "@article{lee2025svdstyle,\n  title={A Training-Free Style-Personalization via SVD-Based Feature Decomposition},\n  author={Lee, Kyoungmin and Park, Jihun and Gim, Jongmin and Choi, Wonhyeok and Hwang, Kyumin and Kim, Jaeyeul and Im, Sunghoon},\n  journal={arXiv preprint arXiv:2507.04482},\n  year={2025}\n}"
     },
     {
       "slug": "style-aligned",
@@ -79,7 +79,7 @@ window.SITE_CONTENT = {
           "label": "arXiv"
         }
       ],
-      "citation": "1\n2\n3\n4\n5\n6\n@article{park2025stylealigned,\n  title={A Training-Free Style-aligned Image Generation with Scale-wise Autoregressive Model},\n  author={Park, Jihun and Gim, Jongmin and Lee, Kyoungmin and Oh, Minseok and Choi, Minwoo and Kim, Jaeyeul and Park, Woo Chool and Im, Sunghoon},\n  journal={arXiv preprint arXiv:2504.06144},\n  year={2025}\n}"
+      "citation": "@article{park2025stylealigned,\n  title={A Training-Free Style-aligned Image Generation with Scale-wise Autoregressive Model},\n  author={Park, Jihun and Gim, Jongmin and Lee, Kyoungmin and Oh, Minseok and Choi, Minwoo and Kim, Jaeyeul and Park, Woo Chool and Im, Sunghoon},\n  journal={arXiv preprint arXiv:2504.06144},\n  year={2025}\n}"
     },
     {
       "slug": "infinite-story",
@@ -98,7 +98,7 @@ window.SITE_CONTENT = {
           "label": "Infinite-Story"
         }
       ],
-      "citation": "1\n2\n3\n4\n5\n6\n@article{park2025infinite,\n  title={Infinite-Story: A Training-Free Consistent Text-to-Image Generation},\n  author={Park, Jihun and Lee, Kyoungmin and Gim, Jongmin and Jo, Hyeonseo and Oh, Minseok and Choi, Wonhyeok and Hwang, Kyumin and Kim, Jaeyeul and Choi, Minwoo and Im, Sunghoon},\n  journal={arXiv preprint arXiv:2511.13002},\n  year={2025}\n}"
+      "citation": "@article{park2025infinite,\n  title={Infinite-Story: A Training-Free Consistent Text-to-Image Generation},\n  author={Park, Jihun and Lee, Kyoungmin and Gim, Jongmin and Jo, Hyeonseo and Oh, Minseok and Choi, Wonhyeok and Hwang, Kyumin and Kim, Jaeyeul and Choi, Minwoo and Im, Sunghoon},\n  journal={arXiv preprint arXiv:2511.13002},\n  year={2025}\n}"
     },
     {
       "slug": "style_editor",
@@ -117,7 +117,7 @@ window.SITE_CONTENT = {
           "label": "Style-Editor"
         }
       ],
-      "citation": "1\n2\n3\n4\n5\n6\n@inproceedings{park2025styleeditor,\n  title={Style-Editor: Text-driven object-centric style editing},\n  author={Park, JiHun and Gim, Jongmin and Lee, Kyoungmin and Lee, Seunghun and Im, Sunghoon},\n  booktitle={Conference on Computer Vision and Pattern Recognition (CVPR)},\n  year={2025}\n}"
+      "citation": "@inproceedings{park2025styleeditor,\n  title={Style-Editor: Text-driven object-centric style editing},\n  author={Park, JiHun and Gim, Jongmin and Lee, Kyoungmin and Lee, Seunghun and Im, Sunghoon},\n  booktitle={Conference on Computer Vision and Pattern Recognition (CVPR)},\n  year={2025}\n}"
     },
     {
       "slug": "cast_accv",
@@ -132,7 +132,7 @@ window.SITE_CONTENT = {
           "label": "ACCV 2024"
         }
       ],
-      "citation": "1\n2\n3\n4\n5\n6\n@inproceedings{gim2024cast,\n  title={Content-Adaptive Style Transfer: A Training-Free Approach with VQ Autoencoders},\n  author={Gim, Jongmin and Park, JiHun and Lee, Kyoungmin and Im, Sunghoon},\n  booktitle={Asian Conference on Computer Vision (ACCV)},\n  year={2024}\n}"
+      "citation": "@inproceedings{gim2024cast,\n  title={Content-Adaptive Style Transfer: A Training-Free Approach with VQ Autoencoders},\n  author={Gim, Jongmin and Park, JiHun and Lee, Kyoungmin and Im, Sunghoon},\n  booktitle={Asian Conference on Computer Vision (ACCV)},\n  year={2024}\n}"
     }
   ]
 };

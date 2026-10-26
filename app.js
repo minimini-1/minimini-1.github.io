@@ -7,7 +7,7 @@
   const external = 'target="_blank" rel="noopener noreferrer"';
   $('.skip-link').addEventListener('click', event => { event.preventDefault(); $('#main').focus(); });
   const navigationMore = $('.nav-more');
-  document.addEventListener('click', event => { if (!navigationMore.contains(event.target)) navigationMore.open = false; });
+  document.addEventListener('click', event => { if (!navigationMore.contains(event.target) || event.target.closest('.nav-more a')) navigationMore.open = false; });
   navigationMore.addEventListener('keydown', event => { if (event.key === 'Escape') { navigationMore.open = false; $('summary', navigationMore).focus(); } });
   let activeYear = 'all';
 
