@@ -89,11 +89,11 @@ main{width:calc(100% - 40px);max-width:480px;flex:1;position:relative;z-index:2;
 .tabs button{line-height:20px}.chip{display:inline-flex;align-items:center;line-height:20px}
 
 @media(max-width:767px){
- .about-main{grid-template-columns:minmax(0,1fr) clamp(76px,22vw,112px);grid-template-areas:"eyebrow eyebrow" "name name" "tagline portrait" "intro intro" "actions actions" "social social";column-gap:20px;row-gap:0}
+ .about-main{grid-template-columns:minmax(0,1fr) clamp(76px,22vw,112px);grid-template-areas:"eyebrow eyebrow" "name portrait" "tagline portrait" "intro intro" "actions actions" "social social";column-gap:20px;row-gap:0}
  .hero-copy{display:contents}
  .about-main .eyebrow{grid-area:eyebrow;margin-bottom:18px}
- .hero-copy h1{grid-area:name;margin:0 0 24px;text-align:center}
- .hero-tagline{grid-area:tagline;display:flex;flex-direction:column;gap:2px;align-self:center;margin:0;text-align:left;line-height:1.7}
+ .hero-copy h1{grid-area:name;align-self:end;margin:0 0 10px;text-align:left;font-size:clamp(30px,8.2vw,36px)}
+ .hero-tagline{grid-area:tagline;display:flex;flex-direction:column;gap:2px;align-self:start;margin:0;text-align:left;line-height:1.7}
  .tagline-divider{display:none}
  .about-aside{grid-area:portrait;width:100%;align-self:center;justify-self:end}
  .about-aside .portrait-block{width:100%;margin:0}
