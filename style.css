@@ -70,7 +70,7 @@ main{width:calc(100% - 40px);max-width:480px;flex:1;position:relative;z-index:2;
 .citation-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 18px;color:#53684a;font:12px/20px var(--mono)}
 .copy-button{flex:none;min-width:108px;min-height:36px;padding:7px 12px;border:1px solid #b6c4aa;border-radius:5px;background:#fafcf5;color:#35532e;font:12px/20px var(--sans)}
 .copy-button:hover{background:#e3ecd8}
-.citation-code{display:block;width:100%;min-width:0;max-width:100%;max-height:320px;margin:0;padding:18px;border:0;border-radius:0;background:#e8eddf;color:#324b31;white-space:pre-wrap;overflow-wrap:anywhere;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#a8b79b #e8eddf;font:12px/1.85 var(--mono);tab-size:2}
+.citation-code{display:block;width:100%;min-width:0;max-width:100%;max-height:none;margin:0;padding:18px;border:0;border-radius:0;background:#e8eddf;color:#324b31;white-space:pre-wrap;overflow-wrap:anywhere;overflow:visible;font:12px/1.85 var(--mono);tab-size:2}
 .citation-code code{font:inherit;white-space:inherit}
 .citation-code:focus-visible{outline:2px solid #8a7550;outline-offset:-3px}
 .about-view::after,.content-view:not(.paper-view) .section-heading::after{background-image:var(--header-art);background-repeat:no-repeat;background-position:right bottom;background-size:max(100vw,900px) 340px;opacity:.8}
@@ -79,10 +79,10 @@ main{width:calc(100% - 40px);max-width:480px;flex:1;position:relative;z-index:2;
 #news{--header-art:url('assets/header-news.svg')}
 #background{--header-art:url('assets/header-background.svg')}
 #activities{--header-art:url('assets/header-activities.svg')}
-@keyframes header-breathe{from{background-size:max(100vw,900px) 340px}to{background-size:max(109vw,980px) 375px}}
+@keyframes header-breathe{from{background-size:max(100vw,900px) 340px;background-position:100% 100%}to{background-size:max(120vw,1120px) 420px;background-position:calc(100% + 24px) calc(100% + 8px)}}
 @media(prefers-reduced-motion:no-preference){
- .about-view::after,.content-view:not(.paper-view) .section-heading::after{animation:header-breathe var(--header-duration,26s) ease-in-out infinite alternate}
- #research{--header-duration:30s}#news{--header-duration:34s}#background{--header-duration:32s}#activities{--header-duration:28s}
+ .about-view::after,.content-view:not(.paper-view) .section-heading::after{animation:header-breathe var(--header-duration,12s) linear infinite alternate}
+ #research{--header-duration:10s}#news{--header-duration:10s}#background{--header-duration:14s}#activities{--header-duration:12s}
 }
 @media(prefers-reduced-motion:reduce){.about-view::after,.section-heading::after,.paper-heading::after{animation:none!important}.citation-toggle svg{transition:none}}
 
