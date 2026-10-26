@@ -122,11 +122,22 @@ main{width:calc(100% - 40px);max-width:480px;flex:1;position:relative;z-index:2;
 
 .research-toolbar{display:block}.research-years{flex-wrap:nowrap;margin:0}.research-toolbar .small-note{margin:12px 0 0;text-align:right}
 
-.about-object{position:absolute;z-index:1;top:18px;left:50%;width:240px;height:143px;transform:translateX(-50%);pointer-events:none}
-.about-camcorder{position:relative;display:block;width:100%;height:auto;filter:drop-shadow(0 5px 5px #2e463414);transform-origin:50% 60%}
-.about-object-shadow{position:absolute;bottom:12px;left:28%;width:44%;height:8px;border-radius:50%;background:#2947321a;filter:blur(5px)}
-@keyframes camcorder-float{0%,100%{transform:translateY(2px) rotate(-1deg)}50%{transform:translateY(-5px) rotate(1deg)}}
-@keyframes camcorder-shadow{0%,100%{transform:scaleX(1);opacity:.65}50%{transform:scaleX(.85);opacity:.4}}
-@media(min-width:768px){.about-object{top:16px;width:270px;height:160px}}
-@media(prefers-reduced-motion:no-preference){.about-camcorder{animation:camcorder-float 7s ease-in-out infinite}.about-object-shadow{animation:camcorder-shadow 7s ease-in-out infinite}}
-:root[data-theme=dark] .about-object-shadow{background:#0d1f2180}
+.about-object{position:absolute;z-index:1;top:18px;left:50%;width:300px;height:140px;transform:translateX(-50%);pointer-events:none}
+.visual-patches{position:absolute;top:23px;left:22px;display:grid;grid-template-columns:repeat(3,30px);grid-template-rows:repeat(3,30px);gap:3px;transform:rotate(-6deg)}
+.image-patch{display:block;width:30px;height:30px;border-radius:3px;background-image:url("assets/cast_accv.jpg");background-size:446.5px 204.6px;background-position:calc(-150px - var(--col)*33px) calc(-104px - var(--row)*33px);box-shadow:0 0 0 1px #ffffffa0,0 3px 8px #30473518;filter:saturate(.7)}
+.patch-connector{position:absolute;top:69px;left:139px;display:flex;gap:5px;align-items:center;height:6px}
+.patch-connector i{display:block;width:3px;height:3px;border-radius:50%;background:#71856888}
+.text-tokens{position:absolute;top:23px;left:179px;width:103px;display:flex;flex-wrap:wrap;align-content:center;gap:6px;transform:rotate(4deg)}
+.text-tokens span{display:block;padding:5px 8px;border:1px solid #fbfff3c9;border-radius:5px;background:#f9f8ed99;box-shadow:0 2px 5px #3047350a;color:#4b634c;font:12px/16px var(--mono)}
+.text-tokens span:nth-child(2),.text-tokens span:nth-child(5){background:#d6e4e799;color:#435b66}
+.text-tokens span:nth-child(4){background:#e9daba99;color:#746344}
+@keyframes patch-assemble{0%,10%,100%{transform:translate(var(--dx),var(--dy)) rotate(var(--angle))}35%,70%{transform:translate(0,0) rotate(0)}}
+@keyframes token-arrive{0%,10%,100%{transform:translateY(5px);opacity:.85}35%,70%{transform:translateY(0);opacity:1}}
+@keyframes token-connect{0%,100%{opacity:.3}40%,70%{opacity:.8}}
+@media(prefers-reduced-motion:no-preference){.image-patch{animation:patch-assemble 8s ease-in-out var(--delay) infinite}.text-tokens span{animation:token-arrive 8s ease-in-out var(--delay) infinite}.patch-connector{animation:token-connect 8s ease-in-out infinite}}
+@media(min-width:768px){.about-object{top:24px}}
+:root[data-theme=dark] .image-patch{box-shadow:0 0 0 1px #d9e4d45c,0 3px 8px #10241930}
+:root[data-theme=dark] .text-tokens span{background:#bdd0ad29;border-color:#d9e6ce66;color:#eef2df}
+:root[data-theme=dark] .text-tokens span:nth-child(2),:root[data-theme=dark] .text-tokens span:nth-child(5){background:#b2d0e633;color:#e4f0f7}
+:root[data-theme=dark] .text-tokens span:nth-child(4){background:#e5d2a333;color:#f1e5c9}
+:root[data-theme=dark] .patch-connector i{background:#d4e3c888}
