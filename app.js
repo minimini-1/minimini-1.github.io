@@ -21,6 +21,49 @@
     ], { duration: 280, easing: 'cubic-bezier(.2,.7,.2,1)' }));
   }
 
+  const navigation = $('.glass-nav');
+  const navigationGlass = $('.nav-glider');
+  let glassAnimation;
+  let glassDestination;
+  function updateNavigationGlass(animate = true) {
+    const direct = $('.glass-nav > a.active');
+    const moreVisible = navigationMore.offsetWidth > 0;
+    const target = moreVisible && (navigationMore.open || !direct?.offsetWidth) ? $('summary', navigationMore) : direct;
+    if (!target?.offsetWidth) return;
+    const parent = navigation.getBoundingClientRect();
+    const item = target.getBoundingClientRect();
+    const end = { left: item.left - parent.left - navigation.clientLeft, top: item.top - parent.top - navigation.clientTop, width: item.width, height: item.height };
+    const destination = Object.values(end).join(',');
+    if (animate && destination === glassDestination) return;
+    const current = getComputedStyle(navigationGlass);
+    const start = { left: current.left, top: current.top, width: current.width, height: current.height };
+    const ready = !navigationGlass.hidden;
+    glassAnimation?.cancel();
+    Object.entries(end).forEach(([property, value]) => { navigationGlass.style[property] = value + 'px'; });
+    navigationGlass.hidden = false;
+    navigation.classList.add('glass-ready');
+    glassDestination = destination;
+    if (!ready || !animate || motionPreference.matches || !navigationGlass.animate) return;
+    const distance = end.left - parseFloat(start.left);
+    const stretch = Math.min(Math.abs(distance) * .14, 28);
+    const finish = Object.fromEntries(Object.entries(end).map(([property, value]) => [property, value + 'px']));
+    glassAnimation = navigationGlass.animate([
+      { ...start, transform: 'scaleY(1)' },
+      { ...finish, left: (end.left - stretch / 2 + Math.sign(distance) * 3) + 'px', width: (end.width + stretch) + 'px', transform: 'scaleY(.96)', offset: .72 },
+      { ...finish, transform: 'scaleY(1)' }
+    ], { duration: 480, easing: 'cubic-bezier(.22,.8,.2,1)' });
+  }
+  let navigationResize;
+  function resizeNavigationGlass() {
+    cancelAnimationFrame(navigationResize);
+    navigationResize = requestAnimationFrame(() => updateNavigationGlass(false));
+  }
+  navigationMore.addEventListener('toggle', () => updateNavigationGlass());
+  window.addEventListener('resize', resizeNavigationGlass);
+  if ('ResizeObserver' in window) new ResizeObserver(resizeNavigationGlass).observe(navigation);
+  document.fonts?.ready.then(resizeNavigationGlass);
+  motionPreference.addEventListener('change', () => updateNavigationGlass(false));
+
   const venueShort = p => {
     if (p.slug === 'craft') return 'SIGGRAPH ASIA · 2026';
     if (p.slug === 'svd-style') return 'CVPR · 2026';
@@ -224,6 +267,7 @@
     const more = $('.nav-more');
     more.classList.toggle('active', ['background','activities'].includes(view.id));
     more.open = false;
+    updateNavigationGlass(!initial);
     if (['education','experience','work-experience'].includes(hash)) selectTab($('.background-tabs'), hash === 'education' ? 'education' : 'experience');
     if (activityAliases[hash]) selectTab($('.activity-tabs'), activityAliases[hash]);
     if (paper) renderPaper(paper);
