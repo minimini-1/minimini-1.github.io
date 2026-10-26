@@ -21,6 +21,19 @@
     ], { duration: 280, easing: 'cubic-bezier(.2,.7,.2,1)' }));
   }
 
+  const multimodalScene = $('.multimodal-scene');
+  let sceneAnimations = [];
+  multimodalScene.addEventListener('click', () => {
+    sceneAnimations.forEach(animation => animation.cancel());
+    sceneAnimations = [];
+    if (motionPreference.matches || !multimodalScene.animate) return;
+    sceneAnimations = $$('.image-patch,.text-tokens span', multimodalScene).map((tile, index) => tile.animate([
+      { transform: 'translateY(0)' },
+      { transform: 'translateY(-3px)', offset: .4 },
+      { transform: 'translateY(0)' }
+    ], { duration: 650, delay: index * 45, easing: 'cubic-bezier(.3,0,.25,1)' }));
+  });
+
   const navigation = $('.glass-nav');
   const navigationGlass = $('.nav-glider');
   let glassAnimation;

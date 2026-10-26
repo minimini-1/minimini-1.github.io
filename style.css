@@ -122,25 +122,19 @@ main{width:calc(100% - 40px);max-width:480px;flex:1;position:relative;z-index:2;
 
 .research-toolbar{display:block}.research-years{flex-wrap:nowrap;margin:0}.research-toolbar .small-note{margin:12px 0 0;text-align:right}
 
-.about-object{position:absolute;z-index:1;top:6px;left:50%;width:300px;height:140px;transform:translateX(-50%);pointer-events:none}
-.visual-patches{position:absolute;inset:0}
-.image-patch{position:absolute;left:var(--x);top:var(--y);display:block;width:36px;height:36px;transform-origin:0 0;border-radius:3px;background-image:url("assets/cast_accv.jpg");background-size:348.8px 159.8px;background-position:calc(-117.3px - var(--col)*39px) calc(-81.5px - var(--row)*39px);box-shadow:0 0 0 1px #ffffffa0,0 3px 8px #30473518;filter:saturate(.7)}
-.patch-connector{position:absolute;top:59px;left:83px;display:flex;gap:2px;align-items:center;height:3px}
-.patch-connector i{display:block;width:3px;height:3px;border-radius:50%;background:#71856888}
-.text-tokens{position:absolute;inset:0}
-.text-tokens span{position:absolute;left:var(--x);top:var(--y);display:block;width:var(--width);padding:4px 0;text-align:center;border:1px solid #fbfff3c9;border-radius:5px;background:#f9f8ed99;box-shadow:0 2px 5px #3047350a;color:#4b634c;font:11px/15px var(--mono)}
+.about-object{--patch-size:clamp(12px,3.75vw,18px);--token-size:clamp(9px,2.5vw,12px);position:absolute;z-index:1;top:6px;left:50%;width:min(600px,calc(100vw - 32px));height:120px;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:8px;margin:0;padding:0;border:0;border-radius:12px;background:transparent;color:inherit;cursor:pointer}
+.visual-patches,.text-tokens{display:flex;align-items:center;flex:none;gap:2px}
+.image-patch{display:block;flex:none;width:var(--patch-size);height:var(--patch-size);border-radius:2px;background-image:url("assets/cast_accv.jpg");background-size:calc(var(--patch-size)*13.9535) auto;background-position:calc(var(--patch-size)*var(--px)) calc(var(--patch-size)*var(--py));box-shadow:0 0 0 1px #ffffffa0,0 2px 5px #30473518;filter:saturate(.7)}
+.text-tokens{gap:3px}
+.text-tokens span{display:block;flex:none;padding:3px;border:1px solid #fbfff3c9;border-radius:4px;background:#f9f8ed99;box-shadow:0 2px 5px #3047350a;color:#4b634c;font:var(--token-size)/1.3 var(--mono);white-space:nowrap}
 .text-tokens span:nth-child(2),.text-tokens span:nth-child(5){background:#d6e4e799;color:#435b66}
 .text-tokens span:nth-child(4){background:#e9daba99;color:#746344}
-@keyframes patch-mix{0%,12%,88%,100%{transform:translate(0,0) scale(1)}44%,56%{transform:translate(var(--mix-x),var(--mix-y)) scale(.5)}}
-@keyframes token-mix{0%,12%,88%,100%{transform:translate(0,0)}44%,56%{transform:translate(var(--mix-x),var(--mix-y))}}
-@keyframes token-connect{0%,12%,84%,100%{opacity:.8}30%,68%{opacity:0}}
-@media(prefers-reduced-motion:no-preference){.image-patch[data-mix]{animation:patch-mix 22s cubic-bezier(.45,0,.25,1) var(--delay) infinite}.text-tokens span[data-mix]{animation:token-mix 22s cubic-bezier(.45,0,.25,1) var(--delay) infinite}.patch-connector{animation:token-connect 22s ease-in-out infinite}}
-@media(min-width:768px){.about-object{top:12px;transform:translateX(-50%) scale(1.2)}}
+@media(min-width:768px){.about-object{--patch-size:22px;--token-size:12px;top:12px;gap:14px}.visual-patches{gap:3px}.text-tokens{gap:4px}.text-tokens span{padding:4px 5px}}
+
 :root[data-theme=dark] .image-patch{box-shadow:0 0 0 1px #d9e4d45c,0 3px 8px #10241930}
 :root[data-theme=dark] .text-tokens span{background:#bdd0ad29;border-color:#d9e6ce66;color:#eef2df}
 :root[data-theme=dark] .text-tokens span:nth-child(2),:root[data-theme=dark] .text-tokens span:nth-child(5){background:#b2d0e633;color:#e4f0f7}
 :root[data-theme=dark] .text-tokens span:nth-child(4){background:#e5d2a333;color:#f1e5c9}
-:root[data-theme=dark] .patch-connector i{background:#d4e3c888}
 
 .glass-nav::before,.glass-nav::after,.theme-toggle::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none}
 .glass-nav::before{background-image:radial-gradient(ellipse at 25% 20%,#c1dcd866,transparent 55%),radial-gradient(ellipse at 75% 80%,#e6d8b552,transparent 55%);background-size:180% 220%,200% 240%;background-position:0% 30%,100% 70%;opacity:.45}
