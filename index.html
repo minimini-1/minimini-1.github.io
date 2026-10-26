@@ -11,21 +11,21 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://minimini-1.github.io/assets/profile.jpeg">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="style.css?v=20261026-10">
+  <link rel="stylesheet" href="style.css?v=20261026-12">
   <script defer src="content.js?v=20261026-8"></script>
-  <script defer src="app.js?v=20261026-8"></script>
+  <script defer src="app.js?v=20261026-12"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient" aria-hidden="true"><span></span><span></span></div>
   <header class="site-header">
     <nav class="glass-nav" aria-label="Main navigation">
-      <a href="#about" class="active" aria-current="page">About</a>
-      <a href="#research">Research</a>
-      <a href="#news">News</a>
-      <a href="#background" class="nav-desktop">Education &amp; Experience</a>
-      <a href="#activities" class="nav-desktop">Academic Activities</a>
-      <details class="nav-more"><summary>More</summary><div class="nav-more-list"><a href="#background">Education &amp; Experience</a><a href="#activities">Academic Activities</a></div></details>
+      <a href="#about" class="active" aria-current="page"><span class="nav-label" data-label="About"><span>About</span></span></a>
+      <a href="#research"><span class="nav-label" data-label="Research"><span>Research</span></span></a>
+      <a href="#news"><span class="nav-label" data-label="News"><span>News</span></span></a>
+      <a href="#background" class="nav-desktop"><span class="nav-label" data-label="Education &amp; Experience"><span>Education &amp; Experience</span></span></a>
+      <a href="#activities" class="nav-desktop"><span class="nav-label" data-label="Academic Activities"><span>Academic Activities</span></span></a>
+      <details class="nav-more"><summary><span class="nav-label" data-label="More"><span>More</span></span></summary><div class="nav-more-list"><a href="#background"><span class="nav-label" data-label="Education &amp; Experience"><span>Education &amp; Experience</span></span></a><a href="#activities"><span class="nav-label" data-label="Academic Activities"><span>Academic Activities</span></span></a></div></details>
     </nav>
   </header>
 
@@ -66,7 +66,7 @@
 
     <section class="view content-view" id="research" aria-labelledby="research-title" hidden>
       <div class="section-heading"><div><p class="eyebrow">PUBLICATIONS</p><h1 id="research-title">Research</h1></div></div>
-      <div class="research-toolbar"><div class="filter-group" aria-label="Filter publications by year"><button class="chip selected" data-year="all" aria-pressed="true">All work <span>6</span></button><button class="chip" data-year="2026" aria-pressed="false">2026</button><button class="chip" data-year="2025" aria-pressed="false">2025</button><button class="chip" data-year="2024" aria-pressed="false">2024</button></div><p class="small-note">* Equal contribution</p></div>
+      <div class="research-toolbar"><div class="filter-group" aria-label="Filter publications by year"><button class="chip selected" data-year="all" aria-pressed="true"><span class="chip-label" data-label="All work"><span>All work</span></span> <span>6</span></button><button class="chip" data-year="2026" aria-pressed="false"><span class="chip-label" data-label="2026"><span>2026</span></span> </button><button class="chip" data-year="2025" aria-pressed="false"><span class="chip-label" data-label="2025"><span>2025</span></span> </button><button class="chip" data-year="2024" aria-pressed="false"><span class="chip-label" data-label="2024"><span>2024</span></span> </button></div><p class="small-note">* Equal contribution</p></div>
       <div id="publication-grid" class="publication-grid"></div><p class="sr-only" id="research-status" role="status"></p>
     </section>
 
@@ -78,14 +78,14 @@
 
     <section class="view content-view" id="background" aria-labelledby="background-title" hidden>
       <div class="section-heading"><div><p class="eyebrow">ACADEMIC &amp; PROFESSIONAL BACKGROUND</p><h1 id="background-title">Education &amp; Experience</h1></div><a class="text-link" href="assets/JongminGim_CV.pdf" target="_blank" rel="noopener noreferrer">Curriculum vitae</a></div>
-      <div class="tabs background-tabs" role="tablist" aria-label="Education and experience"><button role="tab" id="tab-education" aria-controls="education-records" aria-selected="true" tabindex="0" data-panel="education">Education <span>04</span></button><button role="tab" id="tab-experience" aria-controls="experience-records" aria-selected="false" tabindex="-1" data-panel="experience">Experience <span>02</span></button></div>
+      <div class="tabs background-tabs" role="tablist" aria-label="Education and experience"><button role="tab" id="tab-education" aria-controls="education-records" aria-selected="true" tabindex="0" data-panel="education"><span class="tab-label" data-label="Education"><span>Education</span></span> <span>04</span></button><button role="tab" id="tab-experience" aria-controls="experience-records" aria-selected="false" tabindex="-1" data-panel="experience"><span class="tab-label" data-label="Experience"><span>Experience</span></span> <span>02</span></button></div>
       <div id="education-records" role="tabpanel" aria-labelledby="tab-education" tabindex="0"></div>
       <div id="experience-records" role="tabpanel" aria-labelledby="tab-experience" tabindex="0" hidden></div>
     </section>
 
     <section class="view content-view" id="activities" aria-labelledby="activities-title" hidden>
       <div class="section-heading"><div><p class="eyebrow">AWARDS, PROJECTS & SKILLS</p><h1 id="activities-title">Academic Activities</h1></div><a class="text-link" href="assets/JongminGim_CV.pdf" target="_blank" rel="noopener noreferrer">Curriculum vitae</a></div>
-      <div class="tabs activity-tabs" role="tablist" aria-label="Academic activities"><button role="tab" id="tab-awards" aria-controls="panel-awards" aria-selected="true" tabindex="0" data-panel="awards">Awards <span>04</span></button><button role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="false" tabindex="-1" data-panel="projects">Projects <span>05</span></button><button role="tab" id="tab-skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1" data-panel="skills">Skills</button></div>
+      <div class="tabs activity-tabs" role="tablist" aria-label="Academic activities"><button role="tab" id="tab-awards" aria-controls="panel-awards" aria-selected="true" tabindex="0" data-panel="awards"><span class="tab-label" data-label="Awards"><span>Awards</span></span> <span>04</span></button><button role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="false" tabindex="-1" data-panel="projects"><span class="tab-label" data-label="Projects"><span>Projects</span></span> <span>05</span></button><button role="tab" id="tab-skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1" data-panel="skills"><span class="tab-label" data-label="Skills"><span>Skills</span></span> </button></div>
       <div id="activity-panels"></div>
     </section>
 

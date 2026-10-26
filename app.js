@@ -45,7 +45,7 @@
     tab.setAttribute('aria-selected', index === 0);
     tab.tabIndex = index === 0 ? 0 : -1;
     tab.dataset.panel = year;
-    tab.innerHTML = `${year} <span>${String(entries.length).padStart(2, '0')}</span>`;
+    tab.innerHTML = `<span class="tab-label" data-label="${year}"><span>${year}</span></span><span>${String(entries.length).padStart(2, '0')}</span>`;
     $('.news-tabs').append(tab);
     const panel = document.createElement('div');
     panel.id = 'news-panel-' + year;
@@ -168,11 +168,30 @@
   function renderPaper(slug) {
     const p = content.publications.find(p => p.slug === slug);
     if (!p) return;
-    $('#paper-detail').innerHTML = `<header class="paper-heading"><p class="paper-venue">${venueShort(p)} ${badge(p)}</p><h1 id="paper-title">${escape(p.title)}</h1><p class="detail-authors">${p.authors}</p><p class="small-note">${escape(p.venue)}</p><div class="paper-links">${paperLinks(p)}</div></header><img class="detail-image" src="assets/${p.image}" alt="Visual overview of ${escape(p.title)}"><h2>Abstract</h2><p class="abstract">${escape(p.abstract)}</p>${p.citation ? `<details><summary>Cite this work</summary><pre>${escape(p.citation)}</pre><button class="copy-button">Copy BibTeX</button><span class="sr-only" id="copy-status" role="status"></span></details>` : ''}`;
+    $('#paper-detail').innerHTML = `<header class="paper-heading"><p class="paper-venue">${venueShort(p)} ${badge(p)}</p><h1 id="paper-title">${escape(p.title)}</h1><p class="detail-authors">${p.authors}</p><p class="small-note">${escape(p.venue)}</p><div class="paper-links">${paperLinks(p)}</div></header><img class="detail-image" src="assets/${p.image}" alt="Visual overview of ${escape(p.title)}"><h2>Abstract</h2><p class="abstract">${escape(p.abstract)}</p>${p.citation ? `<section class="citation"><button class="citation-toggle" type="button" aria-expanded="false" aria-controls="citation-panel"><span>Cite this work</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button><div class="citation-panel" id="citation-panel" hidden><div class="citation-toolbar"><span>BibTeX</span><button class="copy-button" type="button">Copy BibTeX</button></div><pre class="citation-code" tabindex="0" aria-label="BibTeX citation"><code>${escape(p.citation)}</code></pre><span class="sr-only" id="copy-status" role="status"></span></div></section>` : ''}`;
+    const citationToggle = $('.citation-toggle');
+    const citationPanel = $('#citation-panel');
+    if (citationToggle) citationToggle.addEventListener('click', () => {
+      const expanded = citationToggle.getAttribute('aria-expanded') === 'true';
+      citationToggle.setAttribute('aria-expanded', String(!expanded));
+      citationPanel.hidden = expanded;
+    });
     const copy = $('.copy-button');
+    const copyStatus = $('#copy-status');
+    const citationCode = $('.citation-code code');
     if (copy) copy.addEventListener('click', async () => {
-      try { await navigator.clipboard.writeText(p.citation); copy.textContent = 'Copied!'; $('#copy-status').textContent = 'BibTeX copied to clipboard.'; }
-      catch { copy.textContent = 'Select the citation to copy'; }
+      try {
+        await navigator.clipboard.writeText(p.citation);
+        copy.textContent = 'Copied';
+        copyStatus.textContent = 'BibTeX copied to clipboard.';
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(citationCode);
+        const selection = window.getSelection();
+        if (selection) { selection.removeAllRanges(); selection.addRange(range); }
+        copy.textContent = 'Copy manually';
+        copyStatus.textContent = 'Citation selected. Use your device’s copy command.';
+      }
     });
   }
   const aliases = {publications:'research',journey:'activities',education:'background',experience:'background','work-experience':'background',awards:'activities',projects:'activities',skills:'activities'};
