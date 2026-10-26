@@ -115,5 +115,7 @@ main{width:calc(100% - 40px);max-width:480px;flex:1;position:relative;z-index:2;
 .glass-nav>a:not(.nav-desktop){display:flex;align-items:center;justify-content:center;height:44px;padding-top:0;padding-bottom:0}
 @media(min-width:768px){.glass-nav>a.nav-desktop{display:flex;align-items:center;justify-content:center;height:44px;padding-top:0;padding-bottom:0}}
 
-.header-controls{display:flex;align-items:center;justify-content:center;gap:8px;max-width:100%;pointer-events:none}
+.header-controls{--control-size:56px;display:flex;align-items:center;justify-content:center;gap:8px;max-width:100%;pointer-events:none}
 .header-controls>.glass-nav{flex:none}
+
+@media(min-width:768px){.header-controls{--control-size:60px}}
