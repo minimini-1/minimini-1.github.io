@@ -46,10 +46,22 @@
     }
     sceneAnimations = sceneTiles.map((tile, index) => {
       const target = tile.getBoundingClientRect();
-      return tile.animate([
-        { transform: `translate(${previous[index].left - target.left}px, ${previous[index].top - target.top}px)` },
-        { transform: 'translate(0,0)' }
-      ], { duration: 2000, easing: 'cubic-bezier(.42,0,.58,1)' });
+      const dx = previous[index].left - target.left;
+      const dy = previous[index].top - target.top;
+      const ease = value => {
+        const t = Math.max(0, Math.min(1, value));
+        return t * t * (3 - 2 * t);
+      };
+      const path = Array.from({ length: 31 }, (_, step) => {
+        const t = step / 30;
+        const phase = expanded ? t : 1 - t;
+        const horizontal = ease(phase / .68);
+        const vertical = ease((phase - .45) / .55);
+        const x = expanded ? 1 - horizontal : horizontal;
+        const y = expanded ? 1 - vertical : vertical;
+        return { offset: t, transform: `translate(${dx * x}px, ${dy * y}px)` };
+      });
+      return tile.animate(path, { duration: 2200, easing: 'linear' });
     });
     Promise.allSettled(sceneAnimations.map(animation => animation.finished)).then(() => {
       if (transition === sceneTransition) multimodalScene.classList.remove('is-transitioning');
