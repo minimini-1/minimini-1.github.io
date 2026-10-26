@@ -8,8 +8,8 @@
       try { document.documentElement.dataset.theme = parent.document.documentElement.dataset.theme || 'light'; } catch {}
     </script>
     <style>
-      html, body { margin: 0; background: #f7f7f2; overflow: hidden; color-scheme: light; }
-      html[data-theme="dark"], html[data-theme="dark"] body { background: #151c19; }
+      html, body { margin: 0; background: #f7f7f2; overflow: hidden; color-scheme: only light; }
+      html[data-theme="dark"], html[data-theme="dark"] body { background: #232d28; }
       html[data-theme="dark"] .visitor-map-embed { filter: invert(1) hue-rotate(180deg) brightness(1.5) saturate(.65); mix-blend-mode: lighten; }
       .visitor-globe {
         width: 230px;
