@@ -38,8 +38,6 @@ window.SITE_CONTENT = {
       "authors": "Wonhyeok Choi, Minwoo Choi, Jaeyeul Kim, Kyumin Hwang, <strong>Jongmin Gim</strong>, and Sunghoon Im<sup>†</sup>.",
       "venue": "Neural Information Processing Systems (NeurIPS), 2026",
       "venueShort": "NEURIPS · 2026",
-      "image": "neurips.png",
-      "imageAlt": "NeurIPS conference logo",
       "abstractLabel": "Overview",
       "abstract": "H-GenPO combines generative policies with hierarchical reinforcement learning. A high-level policy chooses temporally extended options, while a shared flow-matching policy generates actions conditioned on learned option embeddings. The approach is evaluated on eight standard continuous-control tasks and three context-dependent tasks in Isaac Lab, where it achieves the best mean rank across the compared baselines and learns specialized options without option-level supervision.",
       "links": [
