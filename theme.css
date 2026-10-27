@@ -4,7 +4,7 @@
 .theme-toggle:hover::before{filter:brightness(1.06)}
 .theme-toggle:active::before{transform:scale(.94)}
 .theme-toggle:hover{background:transparent}
-.theme-toggle svg{position:relative;z-index:1;display:none;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.theme-toggle svg{position:relative;z-index:1;display:none;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 :root[data-theme-preference=system] .theme-icon-system,:root[data-theme-preference=dark] .theme-icon-dark,:root[data-theme-preference=light] .theme-icon-light{display:block}
 @media(max-width:360px){.glass-nav>a:not(.nav-desktop),.nav-more>summary{padding-right:6px;padding-left:6px}}
 :root[data-theme=dark]{color-scheme:only dark;--paper:#232d28;--ink:#eef3e8;--muted:#bdcdb5;--green:#c4e0a8;--line:#617753;--about-tint:#3f5a43;--footer-tint:#314538}
@@ -49,7 +49,7 @@
 :root[data-theme=dark] .nav-glider{border-color:#e7f6d761;background:linear-gradient(145deg,#efffe52e,#ffffff0a 55%,#cdeeb51a);box-shadow:inset 0 1px 1px #eaffdb59,inset 0 -1px 2px #0004,0 3px 9px #0003}
 :root[data-theme=dark] .nav-glider::after{background:linear-gradient(110deg,#ffffff24,#ffffff00 70%)}
 :root[data-theme=dark] .theme-toggle::before{border-color:#d8ebcf48;background:linear-gradient(145deg,#dbe9e52b,#dce5e814 55%,#b5cbd52b);backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);box-shadow:inset 0 2px 1px #efffe326,inset 0 -1px 1px #0003,0 8px 28px #0004}
-:root[data-theme=dark] .nav-more-list{background:#354a35f5;border-color:#94ad7d55;box-shadow:0 10px 35px #0005}
+:root[data-theme=dark] .nav-more-list{background:#303d3be8;border-color:#d3e0d444;box-shadow:0 10px 35px #0005}
 :root[data-theme=dark] .nav-more-list a.active{background:#d5edc21a;box-shadow:none}
 :root[data-theme=dark] .citation{background:#32452e;border-color:#7d9866}
 :root[data-theme=dark] .citation-toggle{color:#e0eed5}
@@ -67,17 +67,18 @@
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){:root[data-theme=dark] .glass-nav{background:#3b4646}:root[data-theme=dark] .nav-glider{background:#577349}}
 
 .theme-control{position:relative;z-index:3;flex:none;width:var(--control-size);height:var(--control-size);pointer-events:auto}
-.theme-menu{position:absolute;right:0;top:calc(100% + 12px);width:180px;max-width:calc(100vw - 32px);padding:7px;border:1px solid #ffffffde;border-radius:14px;background:#f5f8eef5;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 8px 28px #233d3226}
-.theme-menu button{display:flex;align-items:center;justify-content:space-between;gap:18px;width:100%;min-height:44px;padding:10px 12px;border:0;border-radius:8px;background:transparent;color:#344d3e;font:14px/20px var(--sans);text-align:left}
-.theme-menu button::after{content:"✓";visibility:hidden;font-size:15px}
+.theme-menu{position:absolute;right:0;top:calc(100% + 14px);display:grid;gap:6px;width:200px;max-width:calc(100vw - 32px);padding:10px;border:1px solid #ffffffde;border-radius:22px;background:#f5f8eef0;backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);box-shadow:inset 0 1px 1px #ffffffd9,0 12px 32px #233d3226}
+.theme-menu button{display:flex;align-items:center;gap:12px;width:100%;min-height:44px;padding:10px 12px;border:0;border-radius:12px;background:transparent;color:#344d3e;font:14px/20px var(--sans);text-align:left}
+.theme-option-icon{flex:none;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.8}
+.theme-menu button::after{content:"✓";visibility:hidden;flex:none;width:16px;margin-left:auto;font-size:15px;text-align:center}
 .theme-menu button[aria-checked=true]{background:#dce7cf80;font-weight:650}
 .theme-menu button[aria-checked=true]::after{visibility:visible}
-.theme-menu button:hover{background:#dce7cf}
+@media(hover:hover) and (pointer:fine){.theme-menu button:hover{background:#dce7cf80}}
 .theme-menu button:focus-visible{outline-offset:-2px}
-:root[data-theme=dark] .theme-menu{background:#354a35f5;border-color:#b6d39366;box-shadow:0 8px 28px #0004}
-:root[data-theme=dark] .theme-menu button{color:#e5f2d9}
-:root[data-theme=dark] .theme-menu button[aria-checked=true]{background:#c8e7a926}
-:root[data-theme=dark] .theme-menu button:hover{background:#c8e7a938}
+:root[data-theme=dark] .theme-menu{background:#303d3be8;border-color:#d3e0d444;box-shadow:0 8px 28px #0004}
+:root[data-theme=dark] .theme-menu button{color:#eef3ed}
+:root[data-theme=dark] .theme-menu button[aria-checked=true]{background:#edf4e81a}
+@media(hover:hover) and (pointer:fine){:root[data-theme=dark] .theme-menu button:hover{background:#edf4e81a}}
 
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.theme-toggle::before{background:#f2f5ecf2}:root[data-theme=dark] .theme-toggle::before{background:#3b4646}}
 

@@ -115,10 +115,17 @@ main{width:calc(100% - 40px);max-width:480px;flex:1;position:relative;z-index:2;
 .glass-nav>a:not(.nav-desktop){display:flex;align-items:center;justify-content:center;height:44px;padding-top:0;padding-bottom:0}
 @media(min-width:768px){.glass-nav>a.nav-desktop{display:flex;align-items:center;justify-content:center;height:44px;padding-top:0;padding-bottom:0}}
 
-.header-controls{--control-size:56px;display:flex;align-items:center;justify-content:center;gap:8px;max-width:100%;pointer-events:none}
-.header-controls>.glass-nav{flex:none}
-
-@media(min-width:768px){.header-controls{--control-size:60px}}
+.site-header{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+.header-controls{--control-size:56px;display:grid;grid-template-columns:minmax(0,1fr) var(--control-size);align-items:center;gap:12px;width:100%;max-width:100%;pointer-events:none}
+.header-controls>.glass-nav{justify-self:center;border-radius:calc(var(--control-size)/2)}
+.header-controls>.theme-control{justify-self:end}
+.glass-nav>a,.nav-more>summary,.nav-glider{border-radius:22px}
+.nav-glider::after{border-radius:20px 20px 45% 45%}
+.nav-more-list{gap:6px;padding:10px;border-radius:20px;transform:translateX(max(0px,calc(344px - 100vw)))}
+.glass-nav .nav-more-list a{border-radius:12px}
+@media(min-width:361px){.site-header{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}.header-controls{gap:16px}}
+@media(min-width:768px){.site-header{padding-left:max(24px,env(safe-area-inset-left));padding-right:max(24px,env(safe-area-inset-right))}.header-controls{--control-size:60px;gap:20px}}
+@media(min-width:1024px){.site-header{padding-left:max(clamp(24px,3vw,48px),env(safe-area-inset-left));padding-right:max(clamp(24px,3vw,48px),env(safe-area-inset-right))}.header-controls{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}.header-controls>.glass-nav{grid-column:2}.header-controls>.theme-control{grid-column:3}}
 
 .research-toolbar{display:block}.research-years{flex-wrap:nowrap;margin:0}.research-toolbar .small-note{margin:12px 0 0;text-align:right}
 
