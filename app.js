@@ -24,6 +24,7 @@
   const multimodalScene = $('.multimodal-scene');
   const sceneTiles = $$('.image-patch,.text-tokens span', multimodalScene);
   const sceneSurfaces = $$('.modality-surface,.modality-link', multimodalScene);
+  const sceneNoise = $$('.patch-noise', multimodalScene);
   let sceneAnimations = [];
   let sceneTransition = 0;
   function stopSceneTransition() {
@@ -31,61 +32,55 @@
     sceneAnimations.forEach(animation => animation.cancel());
     sceneAnimations = [];
     multimodalScene.classList.remove('is-transitioning');
+    multimodalScene.classList.toggle('has-grid', multimodalScene.classList.contains('is-partitioned'));
   }
   multimodalScene.addEventListener('click', () => {
-    const previous = sceneTiles.map(tile => ({ rect: tile.getBoundingClientRect(), radius: getComputedStyle(tile).borderRadius }));
-    const previousSurfaces = sceneSurfaces.map(surface => ({ rect: surface.getBoundingClientRect(), radius: getComputedStyle(surface).borderRadius }));
+    const elements = [...sceneTiles, ...sceneSurfaces];
+    const previous = elements.map(element => element.getBoundingClientRect());
     stopSceneTransition();
     const transition = sceneTransition;
-    multimodalScene.classList.add('is-transitioning');
-    const expanded = multimodalScene.classList.toggle('is-expanded');
-    multimodalScene.setAttribute('aria-pressed', expanded);
-    multimodalScene.setAttribute('aria-label', expanded ? 'Restore 3 by 3 image grid' : 'Expand image patches into a row');
-    multimodalScene.title = expanded ? 'Click to restore grid' : 'Click to expand';
+    const partitioned = multimodalScene.classList.toggle('is-partitioned');
+    multimodalScene.classList.add('is-transitioning', 'has-grid');
+    multimodalScene.setAttribute('aria-pressed', partitioned);
+    multimodalScene.setAttribute('aria-label', partitioned ? 'Restore complete image' : 'Reveal image patches');
+    multimodalScene.title = partitioned ? 'Click to restore image' : 'Click to reveal patches';
     if (motionPreference.matches || !multimodalScene.animate) {
       multimodalScene.classList.remove('is-transitioning');
+      multimodalScene.classList.toggle('has-grid', partitioned);
       return;
     }
-    const ease = value => {
-      const t = Math.max(0, Math.min(1, value));
-      return t * t * (3 - 2 * t);
-    };
-    const samples = Array.from({ length: 41 }, (_, step) => {
-      const t = step / 40;
-      const phase = expanded ? t : 1 - t;
-      const horizontal = ease(phase / .68);
-      const vertical = ease((phase - .45) / .55);
-      return { t, x: expanded ? 1 - horizontal : horizontal, y: expanded ? 1 - vertical : vertical };
+    sceneAnimations = elements.map((element, index) => {
+      const start = previous[index];
+      const target = element.getBoundingClientRect();
+      const from = { transform: `translate(${start.left - target.left}px, ${start.top - target.top}px)` };
+      const to = { transform: 'translate(0, 0)' };
+      if (index >= sceneTiles.length) {
+        Object.assign(from, { width: `${start.width}px`, height: `${start.height}px` });
+        Object.assign(to, { width: `${target.width}px`, height: `${target.height}px` });
+      }
+      const hold = partitioned ? .28 : 0;
+      return element.animate([
+        { ...from, offset: 0 },
+        { ...from, offset: hold, easing: 'cubic-bezier(.4,0,.2,1)' },
+        { ...to, offset: 1 }
+      ], { duration: partitioned ? 2400 : 1700, easing: 'linear' });
     });
-    sceneAnimations = sceneTiles.map((tile, index) => {
-      const target = tile.getBoundingClientRect();
-      const dx = previous[index].rect.left - target.left;
-      const dy = previous[index].rect.top - target.top;
-      const radius = parseFloat(getComputedStyle(tile).borderRadius);
-      const startRadius = parseFloat(previous[index].radius);
-      const path = samples.map(({ t, x, y }) => ({
-        offset: t,
-        transform: `translate(${dx * x}px, ${dy * y}px)`,
-        borderRadius: `${startRadius + (radius - startRadius) * ease(t) + Math.sin(Math.PI * t) * target.height * .22}px`
-      }));
-      return tile.animate(path, { duration: 2400, easing: 'linear' });
-    });
-    sceneAnimations.push(...sceneSurfaces.map((surface, index) => {
-      const start = previousSurfaces[index];
-      const target = surface.getBoundingClientRect();
-      const radius = parseFloat(getComputedStyle(surface).borderRadius);
-      const startRadius = parseFloat(start.radius);
-      const path = samples.map(({ t, x, y }) => ({
-        offset: t,
-        transform: `translate(${(start.rect.left - target.left) * x}px, ${(start.rect.top - target.top) * y}px)`,
-        width: `${target.width + (start.rect.width - target.width) * x}px`,
-        height: `${target.height + (start.rect.height - target.height) * y}px`,
-        borderRadius: `${startRadius + (radius - startRadius) * ease(t)}px`
-      }));
-      return surface.animate(path, { duration: 2400, easing: 'linear' });
-    }));
     Promise.allSettled(sceneAnimations.map(animation => animation.finished)).then(() => {
-      if (transition === sceneTransition) multimodalScene.classList.remove('is-transitioning');
+      if (transition !== sceneTransition) return;
+      multimodalScene.classList.remove('is-transitioning');
+      multimodalScene.classList.toggle('has-grid', partitioned);
+      if (!partitioned || motionPreference.matches) return;
+      const choices = [...sceneNoise];
+      for (let i = choices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [choices[i], choices[j]] = [choices[j], choices[i]];
+      }
+      sceneAnimations.push(...choices.slice(0, 2 + Math.floor(Math.random() * 2)).map((noise, index) => noise.animate([
+        { opacity: 0, offset: 0 },
+        { opacity: .88, offset: .35 },
+        { opacity: .88, offset: .6 },
+        { opacity: 0, offset: 1 }
+      ], { duration: 2600, delay: index * 260, easing: 'ease-in-out' })));
     });
   });
   window.addEventListener('resize', stopSceneTransition);
