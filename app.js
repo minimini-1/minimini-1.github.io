@@ -130,6 +130,7 @@
   motionPreference.addEventListener('change', () => updateNavigationGlass(false));
 
   const venueShort = p => {
+    if (p.venueShort) return p.venueShort;
     if (p.slug === 'craft') return 'SIGGRAPH ASIA · 2026';
     if (p.slug === 'svd-style') return 'CVPR · 2026';
     if (p.slug === 'style-aligned') return 'ARXIV PREPRINT · 2025';
@@ -138,12 +139,12 @@
     return 'ACCV · 2024';
   };
   const badge = p => p.slug === 'infinite-story' ? '<span class="paper-badge">Oral</span>' : p.slug === 'style_editor' ? '<span class="paper-badge">Highlight</span>' : '';
-  const paperLinks = p => p.links.map((l, i) => `<a href="${escape(l.url)}" ${external}>${i === 0 ? 'Paper' : 'Project page'}</a>`).join('');
+  const paperLinks = p => p.links.map((l, i) => `<a href="${escape(l.url)}" ${external}>${['PDF', 'DOI', 'NeurIPS', 'OpenReview'].includes(l.label) ? escape(l.label) : i === 0 ? 'Paper' : 'Project page'}</a>`).join('');
 
   function renderPublications() {
     const papers = content.publications.filter(p => activeYear === 'all' || venueShort(p).includes(activeYear));
     $('#publication-grid').innerHTML = papers.map(p => `<article class="publication-card">
-      <a class="paper-image" href="#paper/${p.slug}" data-paper="${p.slug}" aria-label="Read ${escape(p.title)}"><img src="assets/${p.image}" alt="Visual overview of ${escape(p.title)}" loading="lazy"></a>
+      <a class="paper-image" href="#paper/${p.slug}" data-paper="${p.slug}" aria-label="Read ${escape(p.title)}"><img src="assets/${p.image}" alt="${escape(p.imageAlt || `Visual overview of ${p.title}`)}" loading="lazy"></a>
       <div class="paper-body"><p class="paper-venue">${venueShort(p)} ${badge(p)}</p><h2 class="paper-title"><a href="#paper/${p.slug}" data-paper="${p.slug}">${escape(p.title)}</a></h2><p class="paper-authors">${p.authors}</p><div class="paper-links">${paperLinks(p)}<a href="#paper/${p.slug}" data-paper="${p.slug}">Details</a></div></div>
     </article>`).join('');
     $('#research-status').textContent = `${papers.length} publications shown${activeYear === 'all' ? '' : ' for ' + activeYear}.`;
@@ -295,7 +296,7 @@
   function renderPaper(slug) {
     const p = content.publications.find(p => p.slug === slug);
     if (!p) return;
-    $('#paper-detail').innerHTML = `<header class="paper-heading"><p class="paper-venue">${venueShort(p)} ${badge(p)}</p><h1 id="paper-title">${escape(p.title)}</h1><p class="detail-authors">${p.authors}</p><p class="small-note">${escape(p.venue)}</p><div class="paper-links">${paperLinks(p)}</div></header><img class="detail-image" src="assets/${p.image}" alt="Visual overview of ${escape(p.title)}"><h2>Abstract</h2><p class="abstract">${escape(p.abstract)}</p>${p.citation ? `<section class="citation"><button class="citation-toggle" type="button" aria-expanded="false" aria-controls="citation-panel"><span>Cite this work</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button><div class="citation-panel" id="citation-panel" hidden><div class="citation-toolbar"><span>BibTeX</span><button class="copy-button" type="button">Copy BibTeX</button></div><pre class="citation-code" tabindex="0" aria-label="BibTeX citation"><code>${escape(p.citation)}</code></pre><span class="sr-only" id="copy-status" role="status"></span></div></section>` : ''}`;
+    $('#paper-detail').innerHTML = `<header class="paper-heading"><p class="paper-venue">${venueShort(p)} ${badge(p)}</p><h1 id="paper-title">${escape(p.title)}</h1><p class="detail-authors">${p.authors}</p><p class="small-note">${escape(p.venue)}</p><div class="paper-links">${paperLinks(p)}</div></header><img class="detail-image" src="assets/${p.image}" alt="${escape(p.imageAlt || `Visual overview of ${p.title}`)}"><h2>${escape(p.abstractLabel || 'Abstract')}</h2><p class="abstract">${escape(p.abstract)}</p>${p.citation ? `<section class="citation"><button class="citation-toggle" type="button" aria-expanded="false" aria-controls="citation-panel"><span>Cite this work</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button><div class="citation-panel" id="citation-panel" hidden><div class="citation-toolbar"><span>BibTeX</span><button class="copy-button" type="button">Copy BibTeX</button></div><pre class="citation-code" tabindex="0" aria-label="BibTeX citation"><code>${escape(p.citation)}</code></pre><span class="sr-only" id="copy-status" role="status"></span></div></section>` : ''}`;
     const citationToggle = $('.citation-toggle');
     const citationPanel = $('#citation-panel');
     if (citationToggle) citationToggle.addEventListener('click', () => {

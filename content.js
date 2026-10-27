@@ -1,5 +1,5 @@
 window.SITE_CONTENT = {
-  "news": "<h4>2026</h4><ul><li> <strong>Aug</strong> <span>One paper accepted to <strong>ACM SIGGRAPH Asia 2026</strong>: CRAFT: Constrained Reward via Attention Fine-Tuning for Subject Personalization without Composed Targets. <a href=\"https://arxiv.org/abs/2608.14403\" target=\"_blank\" rel=\"noopener noreferrer\">(Paper)</a> <a href=\"https://jihun999.github.io/projects/CRAFT/\" target=\"_blank\" rel=\"noopener noreferrer\">(Project Page)</a></span><li> <strong>Jul</strong> <span>I attended <strong>ICVSS 2026</strong>.</span><li> <strong>Feb</strong> <span>One paper accepted to <strong>CVPR 2026</strong>: A Training-Free Style-Personalization via SVD-Based Feature Decomposition. <a href=\"https://arxiv.org/abs/2507.04482\" target=\"_blank\" rel=\"noopener noreferrer\">(Paper)</a></span><li> <strong>Feb</strong> <span>Our AI-Created Artworks are being exhibited at <strong>Daegu Kansong Art Museum</strong>. <a href=\"https://cvlab.dgist.ac.kr/our-ai-created-artworks-will-be-exhibited-at-kansong-art-museum-daegu-for-3-5-months-2026-2-14-2026-5-31/\" target=\"_blank\" rel=\"noopener noreferrer\">(Link)</a></span><li> <strong>Jan</strong> <span>Our team received the Encouragement Prize from the <strong>32nd Samsung HumanTech Paper Award</strong>.</span></ul><h4>2025</h4><ul><li> <strong>Nov</strong> <span>An AI Art Exhibition Showcasing Our Team's Research at the <strong>DGIST Gallery</strong>. <a href=\"https://cvlab.dgist.ac.kr/ai-created-artworks-by-our-team-exhibited-at-dgist-gallery/\" target=\"_blank\" rel=\"noopener noreferrer\">(Link)</a> <a href=\"https://curation.dgist.ac.kr/curation/p/cUuglc1MaUs2MU\" target=\"_blank\" rel=\"noopener noreferrer\">(Curation)</a></span><li> <strong>Nov</strong> <span>One paper accepted to <strong>AAAI 2026 Oral</strong>. <a href=\"https://arxiv.org/abs/2511.13002\" target=\"_blank\" rel=\"noopener noreferrer\">(Paper)</a> <a href=\"https://jihun999.github.io/projects/Infinite-Story/\" target=\"_blank\" rel=\"noopener noreferrer\">(Project Page)</a></span><li> <strong>Mar</strong> <span>Started a Computer Vision researcher at Korea Electronics Technology Institute <strong>(KETI)</strong>.</span><li> <strong>Feb</strong> <span>One paper accepted to <strong>CVPR 2025 highlight</strong>. <a href=\"https://openaccess.thecvf.com/content/CVPR2025/html/Park_Style-Editor_Text-driven_Object-centric_Style_Editing_CVPR_2025_paper.html\" target=\"_blank\" rel=\"noopener noreferrer\">(Paper)</a> <a href=\"https://jihun999.github.io/projects/Style-Editor/\" target=\"_blank\" rel=\"noopener noreferrer\">(Project Page)</a></span></ul><h4>2024</h4><ul><li> <strong>Oct</strong> <span>One paper accepted to <strong>ACCV 2024</strong>. <a href=\"https://openaccess.thecvf.com/content/ACCV2024/html/Gim_Content-Adaptive_Style_Transfer__A_Training-Free_Approach_with_VQ_Autoencoders_ACCV_2024_paper.html\" target=\"_blank\" rel=\"noopener noreferrer\">(Paper)</a></span><li> <strong>Feb</strong> <span>Our team received the Encouragement Prize from the <strong>30th Samsung HumanTech Paper Award</strong>. <a href=\"https://cvlab.dgist.ac.kr/%ec%b5%9c%ec%9b%90%ed%98%81-%ec%8b%a0%eb%af%bc%ea%b7%9c-%eb%b0%95%ec%a7%80%ed%9b%88-%ea%b9%80%ec%a2%85%eb%af%bc-%ec%9d%b4%ea%b2%bd%eb%af%bc-%ec%a0%9c-30%ed%9a%8c-%ec%82%bc%ec%84%b1%ed%9c%b4/\" target=\"_blank\" rel=\"noopener noreferrer\">(Link)</a></span></ul>",
+  "news": "<h4>2026</h4><ul><li> <strong>Sep</strong> <span>One paper accepted to <strong>NeurIPS 2026</strong>: H-GenPO: Hierarchical Generative Policy Optimization via the Option-Critic Framework. <a href=\"https://neurips.cc/virtual/2026/loc/sydney/poster/148440\" target=\"_blank\" rel=\"noopener noreferrer\">(NeurIPS)</a> <a href=\"https://openreview.net/forum?id=xmAWFBUpId\" target=\"_blank\" rel=\"noopener noreferrer\">(OpenReview)</a></span><li> <strong>Aug</strong> <span>One paper accepted to <strong>ACM SIGGRAPH Asia 2026</strong>: CRAFT: Constrained Reward via Attention Fine-Tuning for Subject Personalization without Composed Targets. <a href=\"https://arxiv.org/abs/2608.14403\" target=\"_blank\" rel=\"noopener noreferrer\">(Paper)</a> <a href=\"https://jihun999.github.io/projects/CRAFT/\" target=\"_blank\" rel=\"noopener noreferrer\">(Project Page)</a></span><li> <strong>Jul</strong> <span>I attended <strong>ICVSS 2026</strong>.</span><li> <strong>Feb</strong> <span>One paper accepted to <strong>CVPR 2026</strong>: A Training-Free Style-Personalization via SVD-Based Feature Decomposition. <a href=\"https://arxiv.org/abs/2507.04482\" target=\"_blank\" rel=\"noopener noreferrer\">(Paper)</a></span><li> <strong>Feb</strong> <span>One paper accepted to <strong>CVPR Findings 2026</strong>: FREESTYLE: An Anchor-Free Mechanism for Training-Free Style-Aligned Image Generation. <a href=\"https://openaccess.thecvf.com/content/CVPR2026F/papers/Oh_FREESTYLE_An_Anchor-Free_Mechanism_for_Training-Free_Style-Aligned_Image_Generation_CVPRF_2026_paper.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">(Paper)</a></span><li> <strong>Feb</strong> <span>Our AI-Created Artworks are being exhibited at <strong>Daegu Kansong Art Museum</strong>. <a href=\"https://cvlab.dgist.ac.kr/our-ai-created-artworks-will-be-exhibited-at-kansong-art-museum-daegu-for-3-5-months-2026-2-14-2026-5-31/\" target=\"_blank\" rel=\"noopener noreferrer\">(Link)</a></span><li> <strong>Jan</strong> <span>Our team received the Encouragement Prize from the <strong>32nd Samsung HumanTech Paper Award</strong>.</span></ul><h4>2025</h4><ul><li> <strong>Nov</strong> <span>An AI Art Exhibition Showcasing Our Team's Research at the <strong>DGIST Gallery</strong>. <a href=\"https://cvlab.dgist.ac.kr/ai-created-artworks-by-our-team-exhibited-at-dgist-gallery/\" target=\"_blank\" rel=\"noopener noreferrer\">(Link)</a> <a href=\"https://curation.dgist.ac.kr/curation/p/cUuglc1MaUs2MU\" target=\"_blank\" rel=\"noopener noreferrer\">(Curation)</a></span><li> <strong>Nov</strong> <span>One paper accepted to <strong>AAAI 2026 Oral</strong>. <a href=\"https://arxiv.org/abs/2511.13002\" target=\"_blank\" rel=\"noopener noreferrer\">(Paper)</a> <a href=\"https://jihun999.github.io/projects/Infinite-Story/\" target=\"_blank\" rel=\"noopener noreferrer\">(Project Page)</a></span><li> <strong>Mar</strong> <span>Started a Computer Vision researcher at Korea Electronics Technology Institute <strong>(KETI)</strong>.</span><li> <strong>Feb</strong> <span>One paper accepted to <strong>CVPR 2025 highlight</strong>. <a href=\"https://openaccess.thecvf.com/content/CVPR2025/html/Park_Style-Editor_Text-driven_Object-centric_Style_Editing_CVPR_2025_paper.html\" target=\"_blank\" rel=\"noopener noreferrer\">(Paper)</a> <a href=\"https://jihun999.github.io/projects/Style-Editor/\" target=\"_blank\" rel=\"noopener noreferrer\">(Project Page)</a></span></ul><h4>2024</h4><ul><li> <strong>Oct</strong> <span>One paper accepted to <strong>ACCV 2024</strong>. <a href=\"https://openaccess.thecvf.com/content/ACCV2024/html/Gim_Content-Adaptive_Style_Transfer__A_Training-Free_Approach_with_VQ_Autoencoders_ACCV_2024_paper.html\" target=\"_blank\" rel=\"noopener noreferrer\">(Paper)</a></span><li> <strong>Feb</strong> <span>Our team received the Encouragement Prize from the <strong>30th Samsung HumanTech Paper Award</strong>. <a href=\"https://cvlab.dgist.ac.kr/%ec%b5%9c%ec%9b%90%ed%98%81-%ec%8b%a0%eb%af%bc%ea%b7%9c-%eb%b0%95%ec%a7%80%ed%9b%88-%ea%b9%80%ec%a2%85%eb%af%bc-%ec%9d%b4%ea%b2%bd%eb%af%bc-%ec%a0%9c-30%ed%9a%8c-%ec%82%bc%ec%84%b1%ed%9c%b4/\" target=\"_blank\" rel=\"noopener noreferrer\">(Link)</a></span></ul>",
   "sections": {
     "education": [
       "<p><strong>Ph.D. in Graduate School of Culture Technology (GSCT)</strong><br /> <em>KAIST, Daejeon, Korea</em><br /> Advisor: Prof. Sunghoon Im<br /> Aug. 2026 – Present</p>",
@@ -33,6 +33,28 @@ window.SITE_CONTENT = {
   },
   "publications": [
     {
+      "slug": "h-genpo",
+      "title": "H-GenPO: Hierarchical Generative Policy Optimization via the Option-Critic Framework",
+      "authors": "Wonhyeok Choi, Minwoo Choi, Jaeyeul Kim, Kyumin Hwang, <strong>Jongmin Gim</strong>, and Sunghoon Im<sup>†</sup>.",
+      "venue": "Neural Information Processing Systems (NeurIPS), 2026",
+      "venueShort": "NEURIPS · 2026",
+      "image": "neurips.png",
+      "imageAlt": "NeurIPS conference logo",
+      "abstractLabel": "Overview",
+      "abstract": "H-GenPO combines generative policies with hierarchical reinforcement learning. A high-level policy chooses temporally extended options, while a shared flow-matching policy generates actions conditioned on learned option embeddings. The approach is evaluated on eight standard continuous-control tasks and three context-dependent tasks in Isaac Lab, where it achieves the best mean rank across the compared baselines and learns specialized options without option-level supervision.",
+      "links": [
+        {
+          "url": "https://neurips.cc/virtual/2026/loc/sydney/poster/148440",
+          "label": "NeurIPS"
+        },
+        {
+          "url": "https://openreview.net/forum?id=xmAWFBUpId",
+          "label": "OpenReview"
+        }
+      ],
+      "citation": "@inproceedings{choi2026hgenpo,\n  title={H-GenPO: Hierarchical Generative Policy Optimization via the Option-Critic Framework},\n  author={Choi, Wonhyeok and Choi, Minwoo and Kim, Jaeyeul and Hwang, Kyumin and Gim, Jongmin and Im, Sunghoon},\n  booktitle={Advances in Neural Information Processing Systems},\n  year={2026},\n  url={https://neurips.cc/virtual/2026/loc/sydney/poster/148440}\n}"
+    },
+    {
       "slug": "craft",
       "title": "CRAFT: Constrained Reward via Attention Fine-Tuning for Subject Personalization without Composed Targets",
       "authors": "Jihun Park, Kyoungmin Lee, <strong>Jongmin Gim</strong>, Hyeonseo Jo, Jaeyeul Kim, Han Zou, Zhenpeng Zhan, Yan Zhang, and Sunghoon Im.",
@@ -65,6 +87,27 @@ window.SITE_CONTENT = {
         }
       ],
       "citation": "@article{lee2025svdstyle,\n  title={A Training-Free Style-Personalization via SVD-Based Feature Decomposition},\n  author={Lee, Kyoungmin and Park, Jihun and Gim, Jongmin and Choi, Wonhyeok and Hwang, Kyumin and Kim, Jaeyeul and Im, Sunghoon},\n  journal={arXiv preprint arXiv:2507.04482},\n  year={2025}\n}"
+    },
+    {
+      "slug": "freestyle",
+      "title": "FREESTYLE: An Anchor-Free Mechanism for Training-Free Style-Aligned Image Generation",
+      "authors": "Minseok Oh*, Jihun Park*, <strong>Jongmin Gim</strong>, Minwoo Choi, Kyoungmin Lee, Ferdinando Fioretto<sup>†</sup>, and Sunghoon Im<sup>†</sup>.",
+      "venue": "IEEE/CVF Conference on Computer Vision and Pattern Recognition Findings (CVPR Findings), 2026",
+      "venueShort": "CVPR FINDINGS · 2026",
+      "image": "freestyle.jpg",
+      "abstractLabel": "Overview",
+      "abstract": "FREESTYLE produces sets of images with a shared visual style without extra training or a designated anchor image. It combines style cues from multiple samples using Majority Voting, applies them through Majority Style Injection, and adjusts individual object regions with Set-Based Projection. Built on a scale-wise autoregressive model, the method targets reliable style agreement while retaining each image's intended content and efficient inference.",
+      "links": [
+        {
+          "url": "https://openaccess.thecvf.com/content/CVPR2026F/papers/Oh_FREESTYLE_An_Anchor-Free_Mechanism_for_Training-Free_Style-Aligned_Image_Generation_CVPRF_2026_paper.pdf",
+          "label": "PDF"
+        },
+        {
+          "url": "https://doi.org/10.1109/CVPRF71909.2026.00366",
+          "label": "DOI"
+        }
+      ],
+      "citation": "@inproceedings{oh2026freestyle,\n  title={FREESTYLE: An Anchor-Free Mechanism for Training-Free Style-Aligned Image Generation},\n  author={Oh, Minseok and Park, Jihun and Gim, Jongmin and Choi, Minwoo and Lee, Kyoungmin and Fioretto, Ferdinando and Im, Sunghoon},\n  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Findings},\n  year={2026},\n  doi={10.1109/CVPRF71909.2026.00366}\n}"
     },
     {
       "slug": "style-aligned",
