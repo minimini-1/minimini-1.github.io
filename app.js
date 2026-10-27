@@ -23,6 +23,7 @@
 
   const multimodalScene = $('.multimodal-scene');
   const sceneTiles = $$('.image-patch,.text-tokens span', multimodalScene);
+  const sceneSurfaces = $$('.modality-surface,.modality-link', multimodalScene);
   let sceneAnimations = [];
   let sceneTransition = 0;
   function stopSceneTransition() {
@@ -32,7 +33,8 @@
     multimodalScene.classList.remove('is-transitioning');
   }
   multimodalScene.addEventListener('click', () => {
-    const previous = sceneTiles.map(tile => tile.getBoundingClientRect());
+    const previous = sceneTiles.map(tile => ({ rect: tile.getBoundingClientRect(), radius: getComputedStyle(tile).borderRadius }));
+    const previousSurfaces = sceneSurfaces.map(surface => ({ rect: surface.getBoundingClientRect(), radius: getComputedStyle(surface).borderRadius }));
     stopSceneTransition();
     const transition = sceneTransition;
     multimodalScene.classList.add('is-transitioning');
@@ -44,25 +46,44 @@
       multimodalScene.classList.remove('is-transitioning');
       return;
     }
+    const ease = value => {
+      const t = Math.max(0, Math.min(1, value));
+      return t * t * (3 - 2 * t);
+    };
+    const samples = Array.from({ length: 41 }, (_, step) => {
+      const t = step / 40;
+      const phase = expanded ? t : 1 - t;
+      const horizontal = ease(phase / .68);
+      const vertical = ease((phase - .45) / .55);
+      return { t, x: expanded ? 1 - horizontal : horizontal, y: expanded ? 1 - vertical : vertical };
+    });
     sceneAnimations = sceneTiles.map((tile, index) => {
       const target = tile.getBoundingClientRect();
-      const dx = previous[index].left - target.left;
-      const dy = previous[index].top - target.top;
-      const ease = value => {
-        const t = Math.max(0, Math.min(1, value));
-        return t * t * (3 - 2 * t);
-      };
-      const path = Array.from({ length: 31 }, (_, step) => {
-        const t = step / 30;
-        const phase = expanded ? t : 1 - t;
-        const horizontal = ease(phase / .68);
-        const vertical = ease((phase - .45) / .55);
-        const x = expanded ? 1 - horizontal : horizontal;
-        const y = expanded ? 1 - vertical : vertical;
-        return { offset: t, transform: `translate(${dx * x}px, ${dy * y}px)` };
-      });
-      return tile.animate(path, { duration: 2200, easing: 'linear' });
+      const dx = previous[index].rect.left - target.left;
+      const dy = previous[index].rect.top - target.top;
+      const radius = parseFloat(getComputedStyle(tile).borderRadius);
+      const startRadius = parseFloat(previous[index].radius);
+      const path = samples.map(({ t, x, y }) => ({
+        offset: t,
+        transform: `translate(${dx * x}px, ${dy * y}px)`,
+        borderRadius: `${startRadius + (radius - startRadius) * ease(t) + Math.sin(Math.PI * t) * target.height * .22}px`
+      }));
+      return tile.animate(path, { duration: 2400, easing: 'linear' });
     });
+    sceneAnimations.push(...sceneSurfaces.map((surface, index) => {
+      const start = previousSurfaces[index];
+      const target = surface.getBoundingClientRect();
+      const radius = parseFloat(getComputedStyle(surface).borderRadius);
+      const startRadius = parseFloat(start.radius);
+      const path = samples.map(({ t, x, y }) => ({
+        offset: t,
+        transform: `translate(${(start.rect.left - target.left) * x}px, ${(start.rect.top - target.top) * y}px)`,
+        width: `${target.width + (start.rect.width - target.width) * x}px`,
+        height: `${target.height + (start.rect.height - target.height) * y}px`,
+        borderRadius: `${startRadius + (radius - startRadius) * ease(t)}px`
+      }));
+      return surface.animate(path, { duration: 2400, easing: 'linear' });
+    }));
     Promise.allSettled(sceneAnimations.map(animation => animation.finished)).then(() => {
       if (transition === sceneTransition) multimodalScene.classList.remove('is-transitioning');
     });
