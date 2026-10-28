@@ -14,7 +14,7 @@
     const theme = preference === 'system' ? (system.matches ? 'dark' : 'light') : preference;
     root.dataset.theme = theme;
     root.dataset.themePreference = preference;
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#232d28' : '#f7f7f2');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#26292b' : '#f7f7f2');
     document.querySelector('meta[name="color-scheme"]')?.setAttribute('content', preference === 'system' ? 'light dark' : theme);
     try {
       const visitor = document.querySelector('.visitor-block iframe')?.contentDocument?.documentElement;
