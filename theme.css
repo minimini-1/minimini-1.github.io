@@ -39,7 +39,7 @@
 :root[data-theme=dark] #activities .section-heading{--tint:#46525a}
 :root[data-theme=dark] .paper-heading{--tint:#3a5268}
 :root[data-theme=dark] :is(.section-heading,.paper-heading){border-color:#d4dce222}
-:root[data-theme=dark] :is(.about-view::after,.content-view:not(.paper-view) .section-heading::after){filter:brightness(2.5) saturate(.35);opacity:.85}
+:root[data-theme=dark] .about-view::after,:root[data-theme=dark] .content-view:not(.paper-view) .section-heading::after{filter:brightness(0) invert(1);opacity:.85}
 :root[data-theme=dark] .paper-heading::after{background:repeating-radial-gradient(ellipse at 100% 105%,transparent 0 28px,#c7d5df1a 29px 30px,transparent 31px 55px)}
 :root[data-theme=dark] .glass-nav{background:linear-gradient(145deg,#dbe9e52b,#dce5e814 55%,#b5cbd52b);border-color:#dce5eb48;border-bottom-color:#dce5eb29;backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);box-shadow:inset 0 2px 1px #eff7ff26,inset 0 -1px 1px #0003,0 8px 28px #0004}
 :root[data-theme=dark] :is(.glass-nav a,.nav-more>summary,.theme-toggle){color:#eef3f6}
