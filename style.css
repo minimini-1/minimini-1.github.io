@@ -183,4 +183,5 @@ main{width:calc(100% - 40px);max-width:480px;flex:1;position:relative;z-index:2;
 :is(.eyebrow,.small-note,.paper-venue,.news-month,.record-number,.project-index,.section-note,.visitor-block h2,.tabs button>span:not(.tab-label)){color:#687278}
 .social-links a,.text-link,.paper-links a,.news-link,.back-link{color:#416373;text-decoration-color:#7d939f}
 .social-links a span{text-decoration-color:#7d939f}
-.paper-image-empty{pointer-events:none;background:transparent}
+.paper-image-empty{pointer-events:none;background:transparent;display:grid;place-items:center;color:var(--muted);font:600 11px/1.5 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+.paper-image-empty span{opacity:.72}

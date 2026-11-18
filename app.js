@@ -144,7 +144,7 @@
   function renderPublications() {
     const papers = content.publications.filter(p => activeYear === 'all' || venueShort(p).includes(activeYear));
     $('#publication-grid').innerHTML = papers.map(p => `<article class="publication-card">
-      ${p.image ? `<a class="paper-image" href="#paper/${p.slug}" data-paper="${p.slug}" aria-label="Read ${escape(p.title)}"><img src="assets/${p.image}" alt="${escape(p.imageAlt || `Visual overview of ${p.title}`)}" loading="lazy"></a>` : '<div class="paper-image paper-image-empty" aria-hidden="true"></div>'}
+      ${p.image ? `<a class="paper-image" href="#paper/${p.slug}" data-paper="${p.slug}" aria-label="Read ${escape(p.title)}"><img src="assets/${p.image}" alt="${escape(p.imageAlt || `Visual overview of ${p.title}`)}" loading="lazy"></a>` : '<div class="paper-image paper-image-empty" aria-hidden="true"><span>Preview coming soon</span></div>'}
       <div class="paper-body"><p class="paper-venue">${venueShort(p)} ${badge(p)}</p><h2 class="paper-title"><a href="#paper/${p.slug}" data-paper="${p.slug}">${escape(p.title)}</a></h2><p class="paper-authors">${p.authors}</p><div class="paper-links">${paperLinks(p)}<a href="#paper/${p.slug}" data-paper="${p.slug}">Details</a></div></div>
     </article>`).join('');
     $('#research-status').textContent = `${papers.length} publications shown${activeYear === 'all' ? '' : ' for ' + activeYear}.`;
